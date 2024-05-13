@@ -1,0 +1,14 @@
+---
+
+import { extractRelativePathFromSrc } from '../scripts/getPathPostBlogFile';
+
+const URL= 'https://github.com/HectorMartinDama/blog/edit/master/content';
+
+interface Props {
+    file: string;
+}
+
+const { file } = Astro.props;
+---
+
+<a href={URL.concat(extractRelativePathFromSrc(file))} target="_blank" class="transition-colors duration-300 hover:text-[#3D4FF5] dark:hover:text-[#B2C6FE] font-semibold text-xs flex-row gap-4">¿Una errata? Edita el artículo.</a>

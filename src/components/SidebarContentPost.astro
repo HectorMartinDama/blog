@@ -1,0 +1,49 @@
+---
+import { buildHierarchy } from '../scripts/buildHierarchyTableContent';
+import type { Heading } from '../scripts/types';
+
+
+
+export interface Props {
+    headings: {
+        slug: string;
+        text: string;
+        depth: number
+    }[]
+}
+
+const { headings }= Astro.props;
+
+
+const toc=  buildHierarchy(headings);
+
+
+console.log(toc, 'headings')
+---
+
+
+<div>
+    <h3 class="text-sm font-normal mb-2">Contenido del artículo</h3>
+    <nav>
+        <ul class="gap-4">
+            {
+               toc.map((heading) =>(
+                <li>
+                    <a href={'#' + heading.slug} class="text-xs font-medium transition-colors duration-200 hover:text-[#3D4FF5] dark:hover:text-[#B2C6FE]">{heading.text}</a>
+                    { heading.subheadings.length > 0 && (
+                        <ol class="list-decimal list-inside text-xs ml-4 text-[#555962] dark:text-[#888C96]">
+                                {heading.subheadings.map((subheading: Heading) => (
+                                     <li>
+                                         <a href={'#' + subheading.slug} class="text-[#555962] dark:text-[#888C96] text-xs">{subheading.text}</a>
+                                     </li>
+                                ))}
+                        </ol>
+                    )}
+                </li>
+               ))
+            }
+            
+          
+        </ul>
+    </nav>
+</div>

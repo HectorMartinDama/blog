@@ -1,0 +1,52 @@
+---
+import type { MarkdownInstance } from 'astro';
+import PostCard from '../../components/PostCard.astro';
+import MainLayout from '../../layouts/MainLayout.astro';
+import { formatBlogPostsByDate } from '../../scripts/formatBlogPosts';
+import { slugify } from '../../scripts/slugify';
+import type { Frontmatter } from '../../scripts/types';
+
+
+
+export const getStaticPaths= async () =>{
+    return [
+        {
+            params: { category: slugify('Reference Docs') },
+            props: { name: 'Reference Docs' }
+        },
+        {
+            params: { category: slugify('Sveltekit') },
+            props: { name: 'Sveltekit' }
+        },
+        {
+            params: { category: slugify('Astro') },
+            props: { name: 'Astro' }
+        },
+        {
+            params: { category: slugify('Javascript') },
+            props: { name: 'JavaScript' }
+        }
+    ]
+
+
+}
+
+const { category } = Astro.params;
+const { name } = Astro.props;
+
+
+const allPosts:  MarkdownInstance<Frontmatter>[]= await Astro.glob('../blog/*.md');
+const orderPosts= formatBlogPostsByDate(allPosts);
+const categoryPosts= orderPosts.filter(post => slugify(post.frontmatter.category) === category);
+---
+
+
+<MainLayout title='My Blog'>
+    <h3 class="text-xl font-bold mb-5">Artículos sobre <span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE]">{name}<span/></h3>
+    <section class="flex flex-col" data-pagefind-ignore>
+        {
+            categoryPosts.map((post) =><PostCard frontmatter={post.frontmatter} url={post.url}/>)
+        }
+        </section>
+</MainLayout>
+

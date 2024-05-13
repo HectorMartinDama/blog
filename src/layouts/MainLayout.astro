@@ -1,0 +1,33 @@
+---
+import MainHead from './MainHead.astro';
+import "../styles/global.css";
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import { handleObserverClick } from '../components/ThemeIcon.astro.inline.mjs';
+
+
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const { title, description }= Astro.props as Props
+
+
+
+---
+
+<html lang="en">
+    <MainHead {title}/>	
+	<body>
+        <Nav/>
+        <div class="flex justify-center mt-[100px] w-full">
+            <main class="md:w-[736px] px-[20px] md:px-0 w-full">
+                <slot></slot>
+            </main>
+        </div>
+        <Footer/>
+	</body>
+</html>
+

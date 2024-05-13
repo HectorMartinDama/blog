@@ -1,0 +1,23 @@
+---
+import { formatDate } from "../scripts/dateFormatter";
+import Badge from "./Badge.astro";
+
+const { frontmatter, url } = Astro.props;
+
+
+const { title, description, category ,date }= frontmatter;
+---
+
+
+    <a href={url} class="flex flex-col text-lg font-semibold -tracking-wider md:w-[648px] sm:w-[390px] rounded-[4px] py-5 px-5 mb-5 transition-colors duration-300 hover:bg-[#EDEEF2] dark:hover:bg-[#23262F]">
+        {title}
+        <p class="text-sm mt-2 -tracking-wider">{description}</p>
+        <div class="flex flex-row justify-between items-center mt-2">
+            <small class="text-xs font-regular mt-1 text-[#555962] dark:text-[#888C96]">{formatDate(date)}</small>
+            <Badge {category}/>
+        </div>
+    </a>
+
+
+
+

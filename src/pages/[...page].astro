@@ -1,0 +1,55 @@
+---
+import type { MarkdownInstance } from "astro";
+import CategoryCloud from "../components/CategoryCloud.astro";
+import Pagination from "../components/Pagination.astro";
+import PostCard from "../components/PostCard.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import type { Frontmatter } from "../scripts/types";
+import { formatBlogPostsByDate } from "../scripts/formatBlogPosts";
+import { slide } from "astro:transitions";
+import Search from "../components/Search.astro";
+
+
+export const getStaticPaths= async ({ paginate }) =>{
+	const allPosts: MarkdownInstance<Frontmatter>[] = await Astro.glob('./blog/*.md');
+	const orderPosts= formatBlogPostsByDate(allPosts);
+	return paginate(orderPosts, { pageSize: 3 });
+}
+
+const { page }= Astro.props;
+---
+
+<MainLayout title="My Blog" description="HectorMartinDama Blog">
+	
+	<div class="z-10">
+		<Search />
+
+	</div>
+	
+	<SectionTitle title="Últimos artículos" data-pagefind-ignore />
+	<section class="flex flex-col mb-7 box" data-pagefind-ignore >
+		<div data-pagefind-ignore transition:animate={slide({ duration: '0.6s' })} class="min-h-[420px]">
+			{
+				page.data.map((post) =><PostCard frontmatter={post.frontmatter} url={post.url}/>)
+			}
+
+		</div>
+		<Pagination prevUrl={page.url.prev} nextUrl={page.url.next}/>
+	</section>
+	<SectionTitle title="Artículos por temas" data-pagefind-ignore/>
+	<section data-pagefind-ignore>
+		<CategoryCloud/>
+	</section>
+</MainLayout>
+
+
+
+
+
+<script>
+	document.addEventListener("astro:after-swap", function () {
+		 // @ts-ignore
+		new PagefindUI({ element: "#search", showSubResults: true, showImages: false});
+    });
+</script>

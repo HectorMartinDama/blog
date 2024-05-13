@@ -1,0 +1,45 @@
+---
+import type { MarkdownInstance } from "astro";
+import PostHeader from "../components/PostHeader.astro";
+import RelationArticle from "../components/RelationArticle.astro";
+import { formatBlogPostsByDate } from "../scripts/formatBlogPosts";
+import type { Frontmatter } from "../scripts/types";
+import MainLayout from "./MainLayout.astro";
+import SidebarContentPost from "../components/SidebarContentPost.astro";
+
+
+const { frontmatter, file, headings } = Astro.props;
+
+const { title, date, author, description, image, category }= frontmatter;
+
+const allPosts: MarkdownInstance<Frontmatter>[] = await Astro.glob('../pages/blog/*.md');
+const orderPosts= formatBlogPostsByDate(allPosts);
+
+const relatedPosts: MarkdownInstance<Frontmatter>[]= orderPosts.filter(post => post.frontmatter.category === category && post.frontmatter.title  != title).slice(0, 3);
+---
+
+
+<MainLayout {title} {description}>
+    {
+        headings && headings.length > 0 && (
+            <div class="right-[32px] fixed top-[100px] hidden lg:block">
+                <SidebarContentPost {headings}/>
+            </div>
+        )
+    }
+    <article>
+        <PostHeader {title} {date} {category} {image} {author} {file}/>
+        <div>
+            <div class="max-w-full prose dark:prose-invert prose-a:text-[#3D4FF5] prose-headings:text-[#3D4FF5] prose-headings:font-bold prose-headings:-tracking-wide  dark:prose-headings:text-[#B2C6FE] dark:text-[#fafafa]">
+                <slot/>
+            </div>
+            <aside class="flex flex-col md:flex-row justify-center items-center gap-8 mt-[68px]">
+                {
+                    relatedPosts.length > 0 && (
+                        <RelationArticle {relatedPosts} />
+                    )
+                }
+            </aside>
+        </div>
+    </article>
+</MainLayout>

@@ -1,0 +1,55 @@
+---
+import GithubIcon from "../icons/github.astro"
+import DiscordIcon from "../icons/discord.astro"
+import MenuIcon from "../icons/menu.astro"
+import ThemeIcon from "./ThemeIcon.astro";
+---
+
+
+<nav class="shadow-md flex flex-row justify-between dark:bg-[#2E2E2E] w-full fixed top-0">
+    <div class="flex items-center">
+        <a href="/" class="font-semibold mr-[200px]" aria-label="Go home">HectorBlog</a>
+    </div>
+  
+    <ul class="gap-6 hidden md:flex">
+        <li>
+            <a href="https://github.com/HectorMartinDama" target="_blank">
+                <GithubIcon class="h-6 w-6 hover:scale-125 group transition dark:fill-slate-100"/>
+            </a>
+        </li>
+        <li>
+            <a href="https://github.com/HectorMartinDama" target="_blank">
+                <DiscordIcon class="h-6 w-6 hover:scale-125 group transition"/>
+            </a>
+        </li>
+        <li transition:persist="theme">
+          <ThemeIcon />
+        </li>
+    </ul>
+
+
+    <button class="block md:hidden">
+      <MenuIcon/>
+    </button>
+</nav>
+
+
+
+
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+    padding: 0 40px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur bg-gray-300/60 dark:bg-gray-800/60 ring-white/10;
+    }
+  }
+</style>

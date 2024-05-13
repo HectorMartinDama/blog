@@ -1,0 +1,25 @@
+---
+import ViewTransitions from 'astro/components/ViewTransitions.astro';
+
+interface Props {
+    title: string;
+}
+
+const { title }= Astro.props;
+
+---
+
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon2.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+   
+    <title>{title}</title>
+    <meta name="description">
+    <script src="/pagefind/pagefind-ui.js" is:inline></script>
+    <ViewTransitions/>
+</head>
+  

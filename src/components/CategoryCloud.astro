@@ -1,0 +1,22 @@
+---
+import { slugify } from "../scripts/slugify";
+
+const allPosts= await Astro.glob('../pages/blog/*.md');
+const allCategories= allPosts.map(post => post.frontmatter.category.toLowerCase()).flat();
+
+const processedCategories= allCategories.reduce((acc, category) =>{
+    const value= acc[category] || 0;
+    return { ...acc, [category]: value + 1 }
+}, {});
+---
+
+
+<ul class="flex gap-4">
+    {
+        Object.entries(processedCategories).map(([key, value]) => (
+            <li>
+                <a class="py-2 px-2 rounded-full text-xs uppercase border transition-colors duration-200 hover:border-[#3D4FF5] hover:text-[#3D4FF5] dark:hover:border-[#B2C6FE] dark:hover:text-[#B2C6FE]" href={`/category/${slugify(key)}`}>{key} {value}</a>
+            </li>
+        ))
+    }
+</ul>
