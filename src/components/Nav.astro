@@ -2,11 +2,22 @@
 import GithubIcon from "../icons/github.astro"
 import DiscordIcon from "../icons/discord.astro"
 import MenuIcon from "../icons/menu.astro"
+import CloseIcon from "../icons/close.astro"
 import ThemeIcon from "./ThemeIcon.astro";
+import type { Heading } from "../scripts/types";
+import { buildHierarchy } from "../scripts/buildHierarchyTableContent";
+
+
+interface Props {
+    headings?: Heading[];
+}
+
+const { headings }= Astro.props
+const toc=  buildHierarchy(headings);
 ---
 
 
-<nav class="shadow-md flex flex-row justify-between dark:bg-[#2E2E2E] w-full fixed top-0 md:relative">
+<nav class="shadow-md flex flex-row justify-between dark:bg-[#2E2E2E] w-full fixed top-0 md:relative z-10">
     <div class="flex items-center">
         <a href="/" class="font-semibold mr-[200px]" aria-label="Go home">HectorBlog</a>
     </div>
@@ -27,11 +38,81 @@ import ThemeIcon from "./ThemeIcon.astro";
         </li>
     </ul>
 
+   
 
-    <button class="block md:hidden">
+    <input type="checkbox" name="navbar-active" id="navbar-active" class="">
+    <label for="navbar-active" class="open-navbar-button">
       <MenuIcon/>
-    </button>
+    </label>
+
+   
+
+    <label id="overlay" class="block md:hidden" for="navbar-active"></label>
+
+    <div class="links-container px-[40px] bg-[white] dark:bg-[#2e2e2e]" id="links-container">
+      
+      <header class="flex flex-row justify-end items-center w-full h-[60px] mb-4">
+        <label for="navbar-active" class="close-navbar-button ">
+          <CloseIcon/>   
+        </label>
+      </header>
+   
+
+      <div class="flex flex-col justify-between w-full h-full mb-4">
+        
+        
+              <div>
+        
+              {
+                headings && headings.length > 0 && (
+                <h3 class="text-sm font-normal mb-3">Contenido del artículo</h3>
+                  <ul class="gap-4">
+                    {
+                      toc.map((heading: Heading) => (
+                      <li>
+                            <a href={'#' + heading.slug} class="text-xs font-medium transition-colors duration-200 hover:text-[#3D4FF5] dark:hover:text-[#B2C6FE]">{heading.text}</a>
+                            { heading.subheadings && heading.subheadings.length > 0 && (
+                                <ol class="list-decimal list-inside text-xs ml-4 text-[#555962] dark:text-[#888C96]">
+                                        {heading.subheadings.map((subheading: Heading) => (
+                                             <li>
+                                                 <a href={'#' + subheading.slug} class="text-[#555962] dark:text-[#888C96] text-xs">{subheading.text}</a>
+                                             </li>
+                                        ))}
+                                </ol>
+                            )}
+                        </li>
+                      ))
+                    }
+                  </ul>
+                )
+              }
+              </div>
+        
+        
+           
+            <footer class="border-t-2 py-4 w-full flex flex-row justify-between">
+              <div class="flex gap-4">
+                <a href="https://github.com/HectorMartinDama" target="_blank">
+                  <GithubIcon class="h-5 w-5  dark:fill-slate-100"/>
+               </a>
+                <a href="https://github.com/HectorMartinDama" target="_blank">
+                  <DiscordIcon class="h-5 w-5"/>
+                </a>
+              </div>
+             
+                <ThemeIcon/>
+
+            
+            </footer>
+      </div>
+     
+
+    
+      
+     
+    </div>
 </nav>
+
 
 
 
@@ -52,4 +133,49 @@ import ThemeIcon from "./ThemeIcon.astro";
       @apply shadow-lg ring-1 backdrop-blur bg-gray-300/60 dark:bg-gray-800/60 ring-white/10;
     }
   }
+
+
+  .open-navbar-button, .close-navbar-button {
+      display: none;
+  }
+
+  #navbar-active{
+    display: none;
+  }
+
+  #links-container{
+    display: none;
+  }
+ 
+ 
+
+  @media(max-width: 450px) {
+    #links-container{
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 250px;
+      height: 100%;
+      transition: 0.5s ease-out;
+    }
+    .open-navbar-button, .close-navbar-button {
+      display: block;
+    }
+
+    #navbar-active:checked ~ #links-container{
+      display: flex;
+      right: 0;
+  }
+
+  #navbar-active:checked ~ #overlay{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
 </style>

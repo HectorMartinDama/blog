@@ -16,4 +16,5 @@ export interface Heading {
   slug: string;
   text: string;
   depth: number;
+  subheadings?: Array<Heading>;
 }

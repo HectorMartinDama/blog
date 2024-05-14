@@ -19,7 +19,7 @@ const relatedPosts: MarkdownInstance<Frontmatter>[]= orderPosts.filter(post => p
 ---
 
 
-<MainLayout {title} {description}>
+<MainLayout {title} {description} {headings}>
     {
         headings && headings.length > 0 && (
             <div class="right-[32px] fixed top-[100px] hidden lg:block">

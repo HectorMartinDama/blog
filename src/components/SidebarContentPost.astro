@@ -14,7 +14,6 @@ export interface Props {
 
 const { headings }= Astro.props;
 
-
 const toc=  buildHierarchy(headings);
 
 
@@ -27,10 +26,10 @@ console.log(toc, 'headings')
     <nav>
         <ul class="gap-4">
             {
-               toc.map((heading) =>(
+               toc.map((heading: Heading) =>(
                 <li>
                     <a href={'#' + heading.slug} class="text-xs font-medium transition-colors duration-200 hover:text-[#3D4FF5] dark:hover:text-[#B2C6FE]">{heading.text}</a>
-                    { heading.subheadings.length > 0 && (
+                    { heading.subheadings && heading.subheadings.length > 0 && (
                         <ol class="list-decimal list-inside text-xs ml-4 text-[#555962] dark:text-[#888C96]">
                                 {heading.subheadings.map((subheading: Heading) => (
                                      <li>
