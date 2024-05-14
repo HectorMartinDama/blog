@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import image from "@astrojs/image";
 import vercel from "@astrojs/vercel/serverless";
@@ -20,4 +20,8 @@ export default defineConfig({
     langs: ["javascript"],
     wrap: true,
   },
+  output: "server",
+  adapter: vercel({
+    imageService: true,
+  }),
 });
