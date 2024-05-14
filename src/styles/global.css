@@ -14,6 +14,10 @@
   --pagefind-ui-font: sans-serif;
 }
 
+.pagefind-ui__form.svelte-e9gkc3::before {
+  top: 10px;
+}
+
 * {
   font-family: "Onest";
   font-optical-sizing: auto;
@@ -59,9 +63,14 @@ html.dark .pagefind-ui__drawer {
 }
 
 #search {
+  .pagefind-ui__form {
+    display: flex;
+    flex-direction: column;
+  }
+
   .pagefind-ui__search-input {
-    height: 35px;
     width: 352px;
+    height: 35px;
     font-size: 14px;
   }
 
