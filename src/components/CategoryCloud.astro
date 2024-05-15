@@ -1,8 +1,9 @@
 ---
+import { getCollection, type CollectionEntry } from "astro:content";
 import { slugify } from "../scripts/slugify";
 
-const allPosts= await Astro.glob('../pages/blog/*.md');
-const allCategories= allPosts.map(post => post.frontmatter.category.toLowerCase()).flat();
+const allPosts: CollectionEntry<'blog'>[]= await getCollection('blog');
+const allCategories= allPosts.map(post => post.data.category.toLowerCase()).flat();
 
 const processedCategories= allCategories.reduce((acc, category) =>{
     const value= acc[category] || 0;

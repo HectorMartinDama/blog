@@ -1,21 +1,20 @@
 ---
-import type { MarkdownInstance } from "astro";
 import PostHeader from "../components/PostHeader.astro";
 import RelationArticle from "../components/RelationArticle.astro";
 import { formatBlogPostsByDate } from "../scripts/formatBlogPosts";
-import type { Frontmatter } from "../scripts/types";
 import MainLayout from "./MainLayout.astro";
 import SidebarContentPost from "../components/SidebarContentPost.astro";
-
+import { type CollectionEntry, getCollection } from "astro:content";
 
 const { frontmatter, file, headings } = Astro.props;
-
 const { title, date, author, description, image, category }= frontmatter;
 
-const allPosts: MarkdownInstance<Frontmatter>[] = await Astro.glob('../pages/blog/*.md');
+console.log(frontmatter.category)
+
+const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
 const orderPosts= formatBlogPostsByDate(allPosts);
 
-const relatedPosts: MarkdownInstance<Frontmatter>[]= orderPosts.filter(post => post.frontmatter.category === category && post.frontmatter.title  != title).slice(0, 3);
+const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.data.category === category && post.data.title  != title).slice(0, 3);
 ---
 
 

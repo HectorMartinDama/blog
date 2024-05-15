@@ -2,13 +2,9 @@
 import { formatDate } from "../scripts/dateFormatter";
 import { slugify } from "../scripts/slugify";
 import EditArticle from "./EditArticle.astro";
-import Image from "astro/components/Image.astro";
-
 
 const { title, date, author, image, category, file }= Astro.props;
 ---
-
-
 
 <header>
     <div class="mb-7">
@@ -24,9 +20,7 @@ const { title, date, author, image, category, file }= Astro.props;
         </div>
     </div>
     {
-        image && (
-        <Image src={image.src} alt={image.alt} width='1200' height='600' format="avif" quality={80}  class="hero-image"/>
-    )
-    }
-   
+        image && ( 
+        <img src={image.src} alt={image.alt}/>
+    )}
 </header>

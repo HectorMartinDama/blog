@@ -1,17 +1,25 @@
 ---
-const { prevUrl, nextUrl }= Astro.props;
+
+interface Props {
+    currentPage: number;
+    totalPages: number;
+    disablePrevious: boolean;
+    disableNext: boolean;
+}
 
 
+const { currentPage, totalPages, disablePrevious, disableNext }= Astro.props;
 ---
 
 
 <nav aria-label="blog pages" class="flex flex-row">
     {
-        prevUrl && <a href={prevUrl} class="ml-5 font-bold text-[#3D4FF5] dark:text-[#B2C6FE] hover:underline text-base flex flex-row items-center">artículos recientes</a>
+        !disablePrevious &&   <a href={'?page=' + (currentPage - 1)} class="ml-5 font-bold text-[#3D4FF5] dark:text-[#B2C6FE] hover:underline text-base flex flex-row items-center">artículos recientes</a>
     }
     {
-        nextUrl && <a href={nextUrl} class="ml-5 font-bold text-[#3D4FF5] dark:text-[#B2C6FE] hover:underline text-base flex flex-row items-center">artículos anteriores</a>
+        !disableNext &&  <a href={'?page=' + (currentPage + 1)} class="ml-5 font-bold text-[#3D4FF5] dark:text-[#B2C6FE] hover:underline text-base flex flex-row items-center">artículos anteriores</a>
     }
+  
 </nav>
 
 

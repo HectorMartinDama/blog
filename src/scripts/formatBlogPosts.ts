@@ -1,14 +1,12 @@
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "./types";
+import type { CollectionEntry } from "astro:content";
 
 export const formatBlogPostsByDate = (
-  posts: MarkdownInstance<Frontmatter>[]
-): MarkdownInstance<Frontmatter>[] => {
+  posts: CollectionEntry<"blog">[]
+): CollectionEntry<"blog">[] => {
   posts.sort((a, b) => {
-    return (
-      new Date(b.frontmatter.date).getTime() -
-      new Date(a.frontmatter.date).getTime()
-    );
+    return new Date(b.data.date).getTime() - new Date(a.data.date).getTime();
   });
   return posts;
 };
