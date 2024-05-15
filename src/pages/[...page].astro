@@ -1,12 +1,9 @@
 ---
-import type { MarkdownInstance } from "astro";
 import CategoryCloud from "../components/CategoryCloud.astro";
 import Pagination from "../components/Pagination.astro";
 import PostCard from "../components/PostCard.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
-import type { Frontmatter } from "../scripts/types";
-import { formatBlogPostsByDate } from "../scripts/formatBlogPosts";
 import { slide } from "astro:transitions";
 import Search from "../components/Search.astro";
 import { getCollection, type CollectionEntry } from "astro:content";

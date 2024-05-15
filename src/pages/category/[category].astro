@@ -1,10 +1,8 @@
 ---
-import type { MarkdownInstance } from 'astro';
 import PostCard from '../../components/PostCard.astro';
 import MainLayout from '../../layouts/MainLayout.astro';
 import { formatBlogPostsByDate } from '../../scripts/formatBlogPosts';
 import { slugify } from '../../scripts/slugify';
-import type { Frontmatter } from '../../scripts/types';
 import { type CollectionEntry, getCollection } from 'astro:content';
 
 
