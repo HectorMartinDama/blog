@@ -14,6 +14,6 @@ export default defineConfig({
     langs: ["javascript"],
     wrap: true,
   },
-  output: "server",
+  output: "hybrid",
   adapter: vercel(),
 });
