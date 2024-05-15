@@ -21,5 +21,5 @@ export default defineConfig({
     wrap: true
   },
   output: "server",
-  adapter: cloudflare()
+  adapter: vercel()
 });
