@@ -7,39 +7,22 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 
 
 
-export const getStaticPaths= async () =>{
-    return [
-        {
-            params: { category: slugify('Reference Docs') },
-            props: { name: 'Reference Docs' }
-        },
-        {
-            params: { category: slugify('Sveltekit') },
-            props: { name: 'Sveltekit' }
-        },
-        {
-            params: { category: slugify('Astro') },
-            props: { name: 'Astro' }
-        },
-        {
-            params: { category: slugify('Javascript') },
-            props: { name: 'JavaScript' }
-        }
-    ]
-}
+
 
 const { category } = Astro.params;
-const { name } = Astro.props;
 
 
 const allPosts: CollectionEntry<'blog'>[]= await getCollection('blog');
 const orderPosts= formatBlogPostsByDate(allPosts);
+const allCategories: string[]= [...new Set(allPosts.map(post => post.data.category).flat())];
+const categoryName= allCategories.filter(categoryName => slugify(categoryName) === category);
+console.log(allCategories)
 const categoryPosts= orderPosts.filter(post => slugify(post.data.category) === category);
 ---
 
 
 <MainLayout title='My Blog'>
-    <h3 class="text-xl font-bold mb-5">Artículos sobre <span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE]">{name}<span/></h3>
+    <h3 class="text-xl font-bold mb-5">Artículos sobre <span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE]">{categoryName}<span/></h3>
     <section class="flex flex-col" data-pagefind-ignore>
         {
             categoryPosts.map((post) =><PostCard frontmatter={post.data} url={post.slug}/>)
