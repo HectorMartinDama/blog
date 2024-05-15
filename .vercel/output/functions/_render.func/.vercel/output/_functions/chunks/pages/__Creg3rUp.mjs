@@ -1,7 +1,7 @@
 /* empty css                           */
 import { c as createComponent, r as renderTemplate, f as renderComponent, d as createAstro } from '../astro_BxpB7VFX.mjs';
 import 'kleur/colors';
-import { g as getEntry } from './__B2cc6tCb.mjs';
+import { g as getEntry } from './__DwkqKWwn.mjs';
 
 const $$Astro = createAstro();
 const $$ = createComponent(async ($$result, $$props, $$slots) => {

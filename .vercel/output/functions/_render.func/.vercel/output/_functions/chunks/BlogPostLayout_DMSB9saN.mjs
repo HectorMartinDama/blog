@@ -1,8 +1,8 @@
 import { c as createComponent, r as renderTemplate, m as maybeRenderHead, e as addAttribute, d as createAstro, f as renderComponent, h as renderSlot } from './astro_BxpB7VFX.mjs';
 import 'kleur/colors';
-import { s as slugify, f as formatDate, c as buildHierarchy, b as getCollection, a as $$MainLayout } from './pages/__B2cc6tCb.mjs';
+import { s as slugify, f as formatDate, c as buildHierarchy, b as getCollection, a as $$MainLayout } from './pages/__DwkqKWwn.mjs';
 import 'clsx';
-import { f as formatBlogPostsByDate } from './pages/_author__DiS9o_s1.mjs';
+import { f as formatBlogPostsByDate } from './pages/_author__D3qkWT8M.mjs';
 
 const extractRelativePathFromSrc = (fullPath) => {
   const srcIndex = fullPath.indexOf("/src");

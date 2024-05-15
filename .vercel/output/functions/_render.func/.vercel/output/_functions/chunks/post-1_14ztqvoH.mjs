@@ -1,6 +1,6 @@
 import { c as createComponent, r as renderTemplate, f as renderComponent, u as unescapeHTML } from './astro_BxpB7VFX.mjs';
 import 'kleur/colors';
-import { $ as $$BlogPostLayout } from './BlogPostLayout_CorGoNmp.mjs';
+import { $ as $$BlogPostLayout } from './BlogPostLayout_DMSB9saN.mjs';
 
 const html = "<p><a href=\"https://www.google.com\">Visita Google</a></p>";
 

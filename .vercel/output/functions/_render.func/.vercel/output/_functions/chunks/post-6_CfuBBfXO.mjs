@@ -1,11 +1,11 @@
 import { c as createComponent, r as renderTemplate, f as renderComponent, u as unescapeHTML } from './astro_BxpB7VFX.mjs';
 import 'kleur/colors';
-import { $ as $$BlogPostLayout } from './BlogPostLayout_CorGoNmp.mjs';
+import { $ as $$BlogPostLayout } from './BlogPostLayout_DMSB9saN.mjs';
 
 const html = "";
 
-				const frontmatter = {"layout":"../../layouts/BlogPostLayout.astro","title":"A post about importants items of life 2","date":"2024-11-24T00:00:00.000Z","author":"Pepe Maquina","image":{"src":"/images/post-1.jpg","alt":"A picture of coder"},"description":"Have you ever wondered what the most important items of life are? Well, wonder no more!","draft":false,"category":"Sveltekit"};
-				const file = "/Users/hectormartindama/Dev/blog/src/content/blog/post-4.md";
+				const frontmatter = {"layout":"../../layouts/BlogPostLayout.astro","title":"A post about importants items of life 8","date":"2024-11-24T00:00:00.000Z","author":"Pepe Maquina","image":{"src":"/images/post-1.jpg","alt":"A picture of coder"},"description":"Have you ever wondered what the most important items of life are? Well, wonder no more!","draft":false,"category":"Sveltekit"};
+				const file = "/Users/hectormartindama/Dev/blog/src/content/blog/post-6.md";
 				const url = undefined;
 				function rawContent() {
 					return "";
