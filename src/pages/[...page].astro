@@ -5,7 +5,6 @@ import PostCard from "../components/PostCard.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 import MainLayout from "../layouts/MainLayout.astro";
 import { slide } from "astro:transitions";
-import Search from "../components/Search.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 import { ARTICLES_PER_PAGE } from "../scripts/constants";
 
@@ -13,7 +12,7 @@ import { ARTICLES_PER_PAGE } from "../scripts/constants";
 
 
 const currentPage: number | null= +Astro.url.searchParams.get('page')! || 1;
-const allPosts: CollectionEntry<'blog'>[]= await getCollection('blog');
+const allPosts: CollectionEntry<'blog'>[]= (await (getCollection('blog'))).sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.valueOf() - a.data.date.valueOf());
 const totalPages: number= Math.ceil(allPosts.length / ARTICLES_PER_PAGE);
 
 

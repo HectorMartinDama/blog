@@ -2,8 +2,6 @@
 import { buildHierarchy } from '../scripts/buildHierarchyTableContent';
 import type { Heading } from '../scripts/types';
 
-
-
 export interface Props {
     headings: {
         slug: string;
@@ -15,12 +13,7 @@ export interface Props {
 const { headings }= Astro.props;
 
 const toc=  buildHierarchy(headings);
-
-
-console.log(toc, 'headings')
 ---
-
-
 <div>
     <h3 class="text-sm font-normal mb-2">Contenido del artículo</h3>
     <nav>

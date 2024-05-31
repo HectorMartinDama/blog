@@ -12,12 +12,10 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 const { category } = Astro.params;
 
 
-const allPosts: CollectionEntry<'blog'>[]= await getCollection('blog');
-const orderPosts= formatBlogPostsByDate(allPosts);
+const allPosts: CollectionEntry<'blog'>[]= (await (getCollection('blog'))).sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.valueOf() - a.data.date.valueOf());
 const allCategories: string[]= [...new Set(allPosts.map(post => post.data.category).flat())];
 const categoryName= allCategories.filter(categoryName => slugify(categoryName) === category);
-console.log(allCategories)
-const categoryPosts= orderPosts.filter(post => slugify(post.data.category) === category);
+const categoryPosts= allPosts.filter(post => slugify(post.data.category) === category);
 ---
 
 

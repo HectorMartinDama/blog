@@ -4,7 +4,7 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import { slugify } from '../../scripts/slugify';
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-const allPosts: CollectionEntry<'blog'>[]= await getCollection('blog');
+const allPosts: CollectionEntry<'blog'>[]= (await (getCollection('blog'))).sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.valueOf() - a.data.date.valueOf());
 const allAuthors: string[]= [...new Set(allPosts.map(post => post.data.author).flat())];
 const { author }= Astro.params;
 const authorName= allAuthors.filter(authorName => slugify(authorName) === author);

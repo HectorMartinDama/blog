@@ -5,11 +5,12 @@ import { formatBlogPostsByDate } from "../scripts/formatBlogPosts";
 import MainLayout from "./MainLayout.astro";
 import SidebarContentPost from "../components/SidebarContentPost.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
+import DoYouLike from "../components/DoYouLike.astro";
+
+
 
 const { frontmatter, file, headings } = Astro.props;
 const { title, date, author, description, image, category }= frontmatter;
-
-console.log(frontmatter.category)
 
 const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
 const orderPosts= formatBlogPostsByDate(allPosts);
@@ -29,9 +30,10 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
     <article>
         <PostHeader {title} {date} {category} {image} {author} {file}/>
         <div>
-            <div class="max-w-full prose dark:prose-invert prose-a:text-[#3D4FF5] prose-headings:text-[#3D4FF5] prose-headings:font-bold prose-headings:-tracking-wide  dark:prose-headings:text-[#B2C6FE] dark:text-[#fafafa]">
+            <div class="max-w-full prose dark:prose-invert prose-a:text-[#3D4FF5] dark:prose-a:text-[#B2C6FE] prose-headings:text-[#3D4FF5] prose-headings:font-bold prose-headings:-tracking-wide  dark:prose-headings:text-[#B2C6FE] dark:text-[#fafafa]">
                 <slot/>
             </div>
+            <DoYouLike/>
             <aside class="flex flex-col md:flex-row justify-center items-center gap-8 mt-[68px]">
                 {
                     relatedPosts.length > 0 && (
@@ -39,6 +41,12 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
                     )
                 }
             </aside>
-        </div>
+        </div>    
+     
+
+
     </article>
 </MainLayout>
+
+
+

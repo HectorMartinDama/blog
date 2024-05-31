@@ -7,6 +7,7 @@ import type { Heading } from '../scripts/types';
 
 
 
+
 interface Props {
     title: string;
     description?: string;
@@ -18,14 +19,23 @@ const { title, description, headings }= Astro.props
 
 <html lang="en">
     <MainHead {title}/>	
-	<body>
+	<body class="">
         <Nav {headings}/>
         <div class="flex justify-center mt-[100px] md:mt-[50px] w-full">
             <main class="md:w-[736px] px-[20px] md:px-0 w-full">
                 <slot></slot>
             </main>
         </div>
-        <Footer/>
 	</body>
-</html>
+    <Footer/>
+</html> 
+
+
+<style>
+    main{
+        display: flex; flex-direction: column; min-height: 75vh;
+    }
+</style>
+
+
 
