@@ -33,7 +33,7 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
             <div class="max-w-full prose dark:prose-invert prose-a:text-[#3D4FF5] dark:prose-a:text-[#B2C6FE] prose-headings:text-[#3D4FF5] prose-headings:font-bold prose-headings:-tracking-wide  dark:prose-headings:text-[#B2C6FE] dark:text-[#fafafa]">
                 <slot/>
             </div>
-            <DoYouLike/>
+            <DoYouLike slug={headings[0].file}/>
             <aside class="flex flex-col md:flex-row justify-center items-center gap-8 mt-[68px]">
                 {
                     relatedPosts.length > 0 && (
