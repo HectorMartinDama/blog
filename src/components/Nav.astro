@@ -1,6 +1,5 @@
 ---
 import GithubIcon from "../icons/github.astro"
-import DiscordIcon from "../icons/discord.astro"
 import MenuIcon from "../icons/menu.astro"
 import CloseIcon from "../icons/close.astro"
 import ThemeIcon from "./ThemeIcon.astro";
@@ -29,11 +28,6 @@ const toc=  buildHierarchy(headings);
         <li>
             <a href="https://github.com/HectorMartinDama/blog" target="_blank" aria-label="Github repository">
                 <GithubIcon class="h-6 w-6 hover:scale-125 group transition dark:fill-slate-100"/>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank" aria-label="Discord account">
-                <DiscordIcon class="h-6 w-6 hover:scale-125 group transition"/>
             </a>
         </li>
         <li transition:persist="theme">
@@ -98,14 +92,8 @@ const toc=  buildHierarchy(headings);
                 <a href="https://github.com/HectorMartinDama" target="_blank">
                   <GithubIcon class="h-5 w-5  dark:fill-slate-100"/>
                </a>
-                <a href="https://github.com/HectorMartinDama" target="_blank">
-                  <DiscordIcon class="h-5 w-5"/>
-                </a>
               </div>
-             
                 <ThemeIcon/>
-
-            
             </footer>
       </div>
      
