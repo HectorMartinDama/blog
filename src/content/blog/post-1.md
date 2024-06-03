@@ -3,7 +3,8 @@ layout: "../../layouts/BlogPostLayout.astro"
 title: A Trello Clon Backend and Infraestructure
 date: 2024-03-12
 author: Hector Martin Dama
-image: { src: "/images/post-1.webp", alt: "code" }
+cover: { src: "public/images/post-1.png" }
+image: { src: "public/images/post-1.png", alt: "code" }
 description: Creando el backend de Trello aplicando las mejores prácticas como Arquitectura Hexagonal, DDD (Domain-Driven Design) y Event-Driven Architecture.
 draft: false
 category: Project

@@ -11,6 +11,6 @@ const { slug } = Astro.params;
     <p class="font-light">Si te ha gustado el artículo, puedes realizar estas dos acciones para apoyar mi contenido.</p>
     <div class="flex flex-row gap-10 items-center justify-center mt-5">
         <a class="w-[195px]" href="https://www.buymeacoffee.com/hectormartindama"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=hectormartindama&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
-        <ShareArticle client:load text={slug}/>
+        <ShareArticle client:only="react" text={slug} />
     </div>
 </footer>

@@ -19,6 +19,8 @@ const totalPages: number= Math.ceil(allPosts.length / ARTICLES_PER_PAGE);
 const articleForPage: CollectionEntry<'blog'>[]= allPosts.slice((currentPage - 1) * ARTICLES_PER_PAGE, currentPage * ARTICLES_PER_PAGE)
 ---
 
+
+
 <MainLayout title="My Blog" description="HectorMartinDama Blog">
 	<div class="z-10">
 		<!-- <Search /> -->
