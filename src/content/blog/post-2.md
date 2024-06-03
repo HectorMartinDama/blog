@@ -4,7 +4,7 @@ title: Como iniciar un proyecto en TypeScript con Node.js y Express
 date: 2024-05-31
 description: Infraestructura básica para iniciar un proyecto de Express con TypeScript.
 image: { src: "/images/post-2/cover.webp", alt: "A picture of infraestructure" }
-category: Backend Express
+category: Express
 author: Hector Martin Dama
 ---
 
