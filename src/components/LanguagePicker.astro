@@ -1,0 +1,39 @@
+---
+import LanguageIcon from "../icons/language.astro";
+import ChevronDownIcon from "../icons/chevron-down.astro";
+import { languages } from '../i18n/ui';
+import { changeLanguage, getLangFromUrl, } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const currentLocaleData = languages[lang];
+const otherLocales = Object.fromEntries(
+  Object.entries(languages).filter(([key, value]) => key !== lang)
+);
+---
+
+<div class="relative inline-block text-left">
+  <div class="group dark:text-white rounded-md text-sm font-normal hover:bg-[#edeef2] dark:hover:bg-[#5B5E65] transition-all">
+    <button class="inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
+    aria-expanded="true"
+    aria-haspopup="true">
+      <LanguageIcon/>
+      {currentLocaleData}
+      <ChevronDownIcon/>
+    </button>
+    <ul class="group-hover:block group-hover:animate-fade-down group-hover:animate-duration-200 hidden pt-0.5 absolute w-full">
+      {Object.entries(otherLocales).map(([lang, label]) => (
+        <li class="py-[2px]">
+          <a class="rounded-md bg-[#edeef2] dark:bg-[#23262f] dark:hover:bg-[#5B5E65] hover:bg-[#CFCFD8] font-normal whitespace-no-wrap inline-flex justify-start items-center w-full gap-x-2 px-3 py-2" href={changeLanguage(Astro.url, lang)}>{label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+
+
+
+<button class="flex items-center justify-center gap-2 ">
+ 
+   
+</button>

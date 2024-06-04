@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPostLayout.astro"
+layout: "../../../layouts/BlogPostLayout.astro"
 title: Como iniciar un proyecto en TypeScript con Node.js y Express
 date: 2024-05-31
 description: Infraestructura básica para iniciar un proyecto de Express con TypeScript.

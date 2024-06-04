@@ -1,16 +1,21 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import ShareArticle from './ShareArticle';
 const { slug } = Astro.params;
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 
 
 
 <footer class="flex flex-col border-t mt-10">
-    <h1 class="pt-10 -tracking-wider font-bold text-xl mb-3">¿Te ha gustado el artículo?</h1>
-    <p class="font-light">Si te ha gustado el artículo, puedes realizar estas dos acciones para apoyar mi contenido.</p>
+    <h1 class="pt-10 -tracking-wider font-bold text-xl mb-3">{t('DoYouLike.heading')}</h1>
+    <p class="font-light">{t('DoYouLike.paragraph')}</p>
     <div class="flex flex-row gap-10 items-center justify-center mt-5">
         <a class="w-[195px]" href="https://www.buymeacoffee.com/hectormartindama"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=hectormartindama&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
-        <ShareArticle client:only="react" text={slug} />
+        <ShareArticle client:only="react" text={slug} lang={lang}/>
     </div>
 </footer>

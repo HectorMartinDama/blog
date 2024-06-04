@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPostLayout.astro"
+layout: "../../../layouts/BlogPostLayout.astro"
 title: Aumenta la velocidad del desarrollo responsive
 date: 2024-05-16
 author: Hector Martin Dama

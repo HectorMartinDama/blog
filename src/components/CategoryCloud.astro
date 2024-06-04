@@ -1,9 +1,11 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import { slugify } from "../scripts/slugify";
+import { getLangFromUrl } from "../i18n/utils";
 
-const allPosts: CollectionEntry<'blog'>[]= await getCollection('blog');
-const allCategories= allPosts.map(post => post.data.category.toLowerCase()).flat();
+const lang = getLangFromUrl(Astro.url);
+const allPostsByLanguage: CollectionEntry<'blog'>[]= await getCollection('blog', ({id}) => { return id.startsWith(lang) })
+const allCategories= allPostsByLanguage.map(post => post.data.category.toLowerCase()).flat();
 
 const processedCategories= allCategories.reduce((acc, category) =>{
     const value= acc[category] || 0;
@@ -16,7 +18,7 @@ const processedCategories= allCategories.reduce((acc, category) =>{
     {
         Object.entries(processedCategories).map(([key, value]) => (
             <li>
-                <a class="py-2 px-2 rounded-full text-xs uppercase border transition-colors duration-200 hover:border-[#3D4FF5] hover:text-[#3D4FF5] dark:hover:border-[#B2C6FE] dark:hover:text-[#B2C6FE]" href={`/category/${slugify(key)}`}>{key} {value}</a>
+                <a class="py-2 px-2 rounded-full text-xs uppercase border transition-colors duration-200 hover:border-[#3D4FF5] hover:text-[#3D4FF5] dark:hover:border-[#B2C6FE] dark:hover:text-[#B2C6FE]" href={`/${lang}/category/${slugify(key)}`}>{key} {value}</a>
             </li>
         ))
     }

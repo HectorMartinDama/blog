@@ -7,14 +7,17 @@ import SidebarContentPost from "../components/SidebarContentPost.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import DoYouLike from "../components/DoYouLike.astro";
 import Metadata from "../components/Metadata.astro";
+import { getLangFromUrl } from "../i18n/utils";
 
 const { frontmatter, file, headings } = Astro.props;
-const { slug } =Astro.params
+const { slug } =Astro.params;
+
+console.log(slug)
+const lang = getLangFromUrl(Astro.url);
 const { title, date, author, description, image, category }= frontmatter;
 
-const allPosts: CollectionEntry<'blog'>[] = await getCollection('blog');
-const orderPosts= formatBlogPostsByDate(allPosts);
-
+const allPostsByLanguage: CollectionEntry<'blog'>[]= await getCollection('blog', ({id}) => { return id.startsWith(lang) })
+const orderPosts= formatBlogPostsByDate(allPostsByLanguage);
 const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.data.category === category && post.data.title  != title).slice(0, 3);
 ---
 

@@ -1,18 +1,22 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { formatDate } from "../scripts/dateFormatter";
 import { slugify } from "../scripts/slugify";
 import EditArticle from "./EditArticle.astro";
 
 const { title, date, author, image, category, file }= Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header>
     <div class="mb-7">
         <h1 class="font-bold text-4xl text-center -tracking-wider w-full">{title}</h1>
         <div data-pagefind-ignore class="flex justify-center">
-            <p data-pagefind-ignore class=" text-xs text-center mt-3 hidden md:block">por&nbsp;<a href={`/author/${slugify(author)}`} class="underline"> {author}</a>&nbsp;·&nbsp;{formatDate(date)}&nbsp;·&nbsp;<EditArticle {file}/></p>
+            <p data-pagefind-ignore class="text-xs text-center mt-3 hidden md:block">{t('postHeader.paragraph')}&nbsp;<a href={`/author/${slugify(author)}`} class="underline"> {author}</a>&nbsp;·&nbsp;{formatDate(date)}&nbsp;·&nbsp;<EditArticle {file}/></p>
             <div class="md:hidden">
-                <p data-pagefind-ignore class="flex text-xs text-center mt-3">por&nbsp;<a href={`/author/${slugify(author)}`} class="underline"> {author}</a>&nbsp;·&nbsp;{formatDate(date)}</p>
+                <p data-pagefind-ignore class="flex text-xs text-center mt-3">{t('postHeader.paragraph')}&nbsp;<a href={`/author/${slugify(author)}`} class="underline"> {author}</a>&nbsp;·&nbsp;{formatDate(date)}</p>
                 <div class="flex justify-center">
                     <EditArticle {file}/>
                 </div>

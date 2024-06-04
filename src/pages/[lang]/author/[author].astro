@@ -1,0 +1,26 @@
+---
+import PostCard from '../../../components/PostCard.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import MainLayout from '../../../layouts/MainLayout.astro';
+import { slugify } from '../../../scripts/slugify';
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allPostsByLanguage: CollectionEntry<'blog'>[]= await getCollection('blog', ({id}) => { return id.startsWith(lang) })
+const allAuthors: string[]= [...new Set(allPostsByLanguage.map(post => post.data.author).flat())];
+const { author }= Astro.params;
+const authorName= allAuthors.filter(authorName => slugify(authorName) === author);
+const postsByAuthor= allPostsByLanguage.filter(post => post.data.author === authorName[0]);
+---
+
+<MainLayout title={t('authorPage.heading') + authorName}>
+    <h3 class="text-xl font-bold mb-5 -tracking-wide">{t('authorPage.heading')}&nbsp;<span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE] -tracking-wide">{authorName}<span/></h3>
+    <section class="flex flex-col" data-pagefind-ignore>
+        {
+            postsByAuthor.map((post) =><PostCard frontmatter={post.data} url={post.slug}/>)
+        }
+        </section>
+</MainLayout>

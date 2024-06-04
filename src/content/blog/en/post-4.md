@@ -1,5 +1,5 @@
 ---
-layout: "../../layouts/BlogPostLayout.astro"
+layout: "../../../layouts/BlogPostLayout.astro"
 title: Autenticación en Express con JWT
 date: 2021-08-07
 description: Protege tus rutas en express con JSON Web Tokens JWT mediante un Middleware.

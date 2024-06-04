@@ -4,7 +4,7 @@ import '../../public/sun-and-moon.scss'
 
 
 
-<button id="themeToggle" aria-label="auto" class="theme-toggle" title="Toggles light & dark" aria-live="polite">
+<button class:list={Astro.props.class} id="themeToggle" aria-label="auto" class="theme-toggle" title="Toggles light & dark" aria-live="polite">
   <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
       <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
       <g class="sun-beams" stroke="currentColor">
@@ -27,9 +27,9 @@ import '../../public/sun-and-moon.scss'
 
 <style lang="scss">
   #themeToggle{
-      --size: 24px;
-      --icon-fill: hsl(210 10% 30%);
-      --icon-fill-hover: hsl(210 10% 15%);
+      --size: 20px;
+      --icon-fill: black;
+      --icon-fill-hover: black;
 
       background: none;
       border: none;
@@ -52,8 +52,8 @@ import '../../public/sun-and-moon.scss'
       }
 
       @nest [data-theme="dark"] & {
-          --icon-fill: hsl(210 10% 70%);
-          --icon-fill-hover: hsl(210 15% 90%);
+          --icon-fill: white;
+          --icon-fill-hover: white;
       }
 
       @media (hover: none) {

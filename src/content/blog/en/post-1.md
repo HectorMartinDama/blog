@@ -1,16 +1,16 @@
 ---
-layout: "../../layouts/BlogPostLayout.astro"
+layout: "../../../layouts/BlogPostLayout.astro"
 title: A Trello Clon Backend and Infraestructure
 date: 2024-03-12
 author: Hector Martin Dama
 cover: { src: "public/images/post-1.png" }
 image: { src: "public/images/post-1.png", alt: "code" }
-description: Creando el backend de Trello aplicando las mejores prácticas como Arquitectura Hexagonal, DDD (Domain-Driven Design) y Event-Driven Architecture.
+description: Creating the Trello backend applying best practices such as Hexagonal Architecture, DDD (Domain-Driven Design) and Event-Driven Architecture.
 draft: false
 category: Project
 ---
 
-Este es un proyecto basado en la pagina de retos [devChallenges](https://legacy.devchallenges.io/challenges/wP0LbGgEeKhpFHUpPpDh) aplicando las mejores practicas como Aquitectura Hexagonal, DDD (Domain-Driven Design) y Event-Drive Architecture con el framework Express y TypeScript.
+This is a project based on the challenges page [devChallenges](https://legacy.devchallenges.io/challenges/wP0LbGgEeKhpFHUpPpDh) applying best practices such as Hexagonal Architecture, DDD (Domain-Driven Design) and Event-Drive Architecture with the Express and TypeScript framework.
 
 ## Primeros pasos
 

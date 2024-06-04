@@ -33,7 +33,7 @@ html {
 }
 
 html.dark {
-  background-color: black;
+  background-color: #17181c;
   color: #fafafa;
   --pagefind-ui-primary: #b2c6fe;
   --pagefind-ui-text: #eeeeee;

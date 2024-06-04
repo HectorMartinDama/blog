@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { buildHierarchy } from '../scripts/buildHierarchyTableContent';
 import type { Heading } from '../scripts/types';
 
@@ -12,16 +13,18 @@ export interface Props {
 
 const { headings }= Astro.props;
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 const toc=  buildHierarchy(headings);
 ---
 <div>
-    <h3 class="text-sm font-normal mb-2">Contenido del artículo</h3>
+    <h3 class="text-sm font-normal mb-2">{t('sidebarContentPost.heading')}</h3>
     <nav>
         <ul class="gap-4">
             {
                toc.map((heading: Heading) =>(
                 <li>
-                    <a href={'#' + heading.slug} class="text-xs font-medium transition-colors duration-200 hover:text-[#3D4FF5] dark:hover:text-[#B2C6FE]">{heading.text}</a>
+                    <a href={'#' + heading.slug} class="text-xs font-medium transition-colors duration-200 hover:text-[#3D4FF5] dark:hover:text-[#B2C6FE] cursor-pointer">{heading.text}</a>
                     { heading.subheadings && heading.subheadings.length > 0 && (
                         <ol class="list-decimal list-inside text-xs ml-4 text-[#555962] dark:text-[#888C96]">
                                 {heading.subheadings.map((subheading: Heading) => (

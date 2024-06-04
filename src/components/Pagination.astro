@@ -1,4 +1,5 @@
 ---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
     currentPage: number;
@@ -7,17 +8,19 @@ interface Props {
     disableNext: boolean;
 }
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-const { currentPage, totalPages, disablePrevious, disableNext }= Astro.props;
+const { currentPage, disablePrevious, disableNext }= Astro.props;
 ---
 
 
 <nav aria-label="blog pages" class="flex flex-row">
     {
-        !disablePrevious &&   <a href={'?page=' + (currentPage - 1)} class="ml-5 font-bold text-[#3D4FF5] dark:text-[#B2C6FE] hover:underline text-base flex flex-row items-center">artículos recientes</a>
+        !disablePrevious &&   <a href={'?page=' + (currentPage - 1)} class="ml-5 font-bold text-[#3D4FF5] dark:text-[#B2C6FE] hover:underline text-base flex flex-row items-center">{t('pagination.recents')}</a>
     }
     {
-        !disableNext &&  <a href={'?page=' + (currentPage + 1)} class="ml-5 font-bold text-[#3D4FF5] dark:text-[#B2C6FE] hover:underline text-base flex flex-row items-center">artículos anteriores</a>
+        !disableNext &&  <a href={'?page=' + (currentPage + 1)} class="ml-5 font-bold text-[#3D4FF5] dark:text-[#B2C6FE] hover:underline text-base flex flex-row items-center">{t('pagination.previous')}</a>
     }
   
 </nav>

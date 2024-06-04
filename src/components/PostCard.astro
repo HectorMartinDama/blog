@@ -1,14 +1,16 @@
 ---
+import { getLangFromUrl } from "../i18n/utils";
 import { formatDate } from "../scripts/dateFormatter";
 import Badge from "./Badge.astro";
 
-const { frontmatter, url } = Astro.props;
 
+const lang = getLangFromUrl(Astro.url);
+const { frontmatter, url } = Astro.props;
 const { title, description, category ,date }= frontmatter;
 ---
 
 
-    <a href={'/blog/' + url} class="flex flex-col text-lg font-semibold -tracking-wider md:w-[648px] sm:w-[390px] rounded-[4px] py-5 px-5 mb-5 transition-colors duration-300 hover:bg-[#EDEEF2] dark:hover:bg-[#23262F]">
+    <a href={`blog/` + url.split('/')[1]} class="flex flex-col text-lg font-semibold -tracking-wider md:w-[648px] sm:w-[390px] rounded-[4px] py-5 px-5 mb-5 transition-colors duration-300 hover:bg-[#EDEEF2] dark:hover:bg-[#23262F]">
         {title}
         <p class="text-sm mt-2 -tracking-wider">{description}</p>
         <div class="flex flex-row justify-between items-center mt-2">

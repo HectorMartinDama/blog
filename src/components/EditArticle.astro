@@ -1,14 +1,17 @@
 ---
 
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { URL_REPO_EDIT } from '../scripts/constants';
 import { extractRelativePathFromSrc } from '../scripts/getPathPostBlogFile';
-
-const URL= 'https://github.com/HectorMartinDama/blog/edit/main';
 
 interface Props {
     file: string;
 }
 
 const { file } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<a href={URL.concat(extractRelativePathFromSrc(file))} target="_blank" class="transition-colors duration-300 hover:text-[#3D4FF5] dark:hover:text-[#B2C6FE] font-semibold text-xs flex-row gap-4">¿Una errata? Edita el artículo.</a>
+<a href={URL_REPO_EDIT.concat(extractRelativePathFromSrc(file))} target="_blank" class="transition-colors duration-300 hover:text-[#3D4FF5] dark:hover:text-[#B2C6FE] font-semibold text-xs flex-row gap-4">{t('editArticle.href')}</a>

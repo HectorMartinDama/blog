@@ -1,0 +1,34 @@
+---
+import PostCard from '../../../components/PostCard.astro';
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import MainLayout from '../../../layouts/MainLayout.astro';
+import { formatBlogPostsByDate } from '../../../scripts/formatBlogPosts';
+import { slugify } from '../../../scripts/slugify';
+import { type CollectionEntry, getCollection } from 'astro:content';
+
+
+
+
+
+const { category } = Astro.params;
+
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const allPostsByLanguage: CollectionEntry<'blog'>[]= await getCollection('blog', ({id}) => { return id.startsWith(lang) })
+const allCategories: string[]= [...new Set(allPostsByLanguage.map(post => post.data.category).flat())];
+const categoryName= allCategories.filter(categoryName => slugify(categoryName) === category);
+const categoryPosts= allPostsByLanguage.filter(post => slugify(post.data.category) === category);
+---
+
+
+<MainLayout title={t('categoryPage.heading') + categoryName}>
+    <h3 class="text-xl font-bold mb-5">{t('categoryPage.heading')} <span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE]">{categoryName}<span/></h3>
+    <section class="flex flex-col" data-pagefind-ignore>
+        {
+            categoryPosts.map((post) =><PostCard frontmatter={post.data} url={post.slug}/>)
+        }
+        </section>
+</MainLayout>
+

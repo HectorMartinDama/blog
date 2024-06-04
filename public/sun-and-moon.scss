@@ -3,16 +3,16 @@
     transform-origin: center center;
   }
 
-  & > :is(.moon, .sun) {
-    fill: hsl(210 10% 30%);
+  & > :is(.moon) {
+    fill: white;
 
     .themeToggle:is(:hover, :focus-visible) > & {
-      fill: hsl(210 10% 15%);
+      fill: black;
     }
   }
 
   & > .sun-beams {
-    stroke: hsl(210 10% 30%);
+    stroke: black;
     stroke-width: 2px;
 
     .themeToggle:is(:hover, :focus-visible) & {
