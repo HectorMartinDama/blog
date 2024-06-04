@@ -37,7 +37,7 @@ export const ui = {
     "categoryPage.heading": "Articles about",
     "postHeader.paragraph": "by",
     "editArticle.href": "A typo? Edit the article.",
-    "sidebarContentPost.heading": "Table of content",
+    "sidebarContentPost.heading": "Table of contents",
     "DoYouLike.heading": "Did you like the article?",
     "DoYouLike.paragraph":
       "If you liked the article, you can take these two actions to support my content.",
