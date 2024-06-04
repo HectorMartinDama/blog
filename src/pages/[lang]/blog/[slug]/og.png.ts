@@ -5,7 +5,7 @@ export const prerender = true;
 import { ImageResponse } from "@vercel/og";
 
 interface Props {
-  params: { slug: string };
+  params: { slug: string; lang: string };
   props: { post: CollectionEntry<"blog"> };
 }
 
@@ -101,7 +101,7 @@ export async function GET({ props }: Props) {
 export async function getStaticPaths() {
   const blogPosts = await getCollection("blog");
   return blogPosts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.slug.split("/")[1], lang: post.slug.split("/")[0] },
     props: { post },
   }));
 }
