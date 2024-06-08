@@ -12,7 +12,6 @@ import { getLangFromUrl } from "../i18n/utils";
 const { frontmatter, file, headings } = Astro.props;
 const { slug } =Astro.params;
 
-console.log(slug)
 const lang = getLangFromUrl(Astro.url);
 const { title, date, author, description, image, category }= frontmatter;
 
@@ -26,7 +25,7 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
         slot="head"
         title={title}
         description={description}
-        image={`/blog/${slug}/og.png`}
+        image={`/${lang}/blog/${slug}/og.png`}
         canonicalUrl={`/blog/${slug}/post-2`}
         type="article"
       />
