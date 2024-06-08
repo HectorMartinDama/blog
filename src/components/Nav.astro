@@ -7,6 +7,7 @@ import type { Heading } from "../scripts/types";
 import { buildHierarchy } from "../scripts/buildHierarchyTableContent";
 import LanguagePicker from "./LanguagePicker.astro";
 import { getLangFromUrl } from "../i18n/utils";
+import Search from "./Search.astro";
 
 
 
@@ -22,10 +23,11 @@ const toc=  buildHierarchy(headings);
 
 <nav class="flex flex-row justify-between bg-[#F6F7F9] dark:bg-[#23262F] w-full sticky top-0 z-10 border dark:border-[#17181C]">
     <div class="flex items-center">
-        <a href="/" class="font-bold mr-[200px] -tracking-wider text-md flex items-center gap-2" aria-label="Go home">
+        <a href="/" class="font-bold mr-[150px] -tracking-wider text-md flex items-center gap-2 hover:scale-110 group transition" aria-label="Go home">
           <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-code"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 8l-4 4l4 4" /><path d="M17 8l4 4l-4 4" /><path d="M14 4l-4 16" /></svg>
           HectorDev Blog
         </a>
+        <Search/>
     </div>
   
     <ul class="items-center gap-2 hidden md:flex">

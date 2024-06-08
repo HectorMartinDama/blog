@@ -19,18 +19,11 @@ const allPostsByLanguage: CollectionEntry<'blog'>[]= await getCollection('blog',
 const allPostsSorted: CollectionEntry<'blog'>[]= allPostsByLanguage.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => b.data.date.valueOf() - a.data.date.valueOf());
 const totalPages: number= Math.ceil(allPostsSorted.length / ARTICLES_PER_PAGE);
 const articleForPage: CollectionEntry<'blog'>[]= allPostsSorted.slice((currentPage - 1) * ARTICLES_PER_PAGE, currentPage * ARTICLES_PER_PAGE);
-
-
-console.log(articleForPage[0])
 ---
 
 
 
 <MainLayout title={t('indexPage.title')} description="HectorMartinDama Blog">
-	<div class="z-10">
-		<!-- <Search /> -->
-	</div>
-	
 	<SectionTitle title={t('indexPage.LatestArticles')} data-pagefind-ignore />
 	<section class="flex flex-col mb-7 box" data-pagefind-ignore >
 		<div data-pagefind-ignore transition:animate={slide({ duration: '0.6s' })} class="min-h-[420px]">

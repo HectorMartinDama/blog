@@ -6,7 +6,8 @@ export function getLangFromUrl(url: URL) {
   return defaultLang;
 }
 
-export function changeLanguage(url: URL, newLang: string) {
+export function changeLanguage(url: URL, newLang: string, query: string) {
+  console.log(query);
   const [, lang] = url.pathname.split("/"); // current language
   const newPath = url.pathname.replace(`/${lang}/`, `/${newLang}/`);
   return newPath;

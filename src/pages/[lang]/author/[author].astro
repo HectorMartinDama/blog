@@ -17,7 +17,7 @@ const postsByAuthor= allPostsByLanguage.filter(post => post.data.author === auth
 ---
 
 <MainLayout title={t('authorPage.heading') + authorName}>
-    <h3 class="text-xl font-bold mb-5 -tracking-wide">{t('authorPage.heading')}&nbsp;<span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE] -tracking-wide">{authorName}<span/></h3>
+    <h3 class="text-xl font-bold mb-5 -tracking-wider">{t('authorPage.heading')}&nbsp;<span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE] -tracking-wide">{authorName}<span/></h3>
     <section class="flex flex-col" data-pagefind-ignore>
         {
             postsByAuthor.map((post) =><PostCard frontmatter={post.data} url={post.slug}/>)

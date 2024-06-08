@@ -1,12 +1,45 @@
+---
+import SearchIcon from "../icons/search.astro";
+import CommandIcon from "../icons/command.astro";
+import LetterKIcon from "../icons/letter-k.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 
-<div  id="search" class="h-[35px] text-xs"></div>
-
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
 
 <script is:inline>
-	window.addEventListener('DOMContentLoaded', (event) => {
-	  // @ts-ignore
-	  new PagefindUI({ element: "#search", showSubResults: true, showImages: false});
-	});
+	document.addEventListener('keydown', (event) =>{
+	if(event.metaKey && event.key === 'k'){
+		event.preventDefault();
+		const inputSearch= document.getElementById('query');
+		if(inputSearch) inputSearch.focus();
+	}
+});
 </script>
-  
+
+
+
+<form action=`/${lang}/articles/search`>
+	<div class="relative">
+		<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+			<SearchIcon/>
+		</span>
+		<input type="text" autocomplete="off" name="query" id="query" class="pl-10 pr-16 h-9 bg-white dark:text-[#B6C2CF] dark:bg-[#17181C] rounded-md  w-[350px] border dark:border-[#4b505d] text-[#676779] text-sm px-4 outline-none" placeholder=`${t('SearchComponent.placeholder')}`>
+
+		<span class="absolute inset-y-0 right-0 flex items-center pr-3 gap-1">
+			<div
+				class=" h-5 w-5 border dark:border-[#1d2125] rounded-[4px] bg-white dark:bg-[#1d2125] flex items-center justify-center"
+			>
+				<CommandIcon />
+			</div>
+			<div
+				class="h-5 w-5 border rounded-[4px] dark:border-[#1d2125] bg-white dark:bg-[#1d2125] flex items-center justify-center"
+			>
+				<LetterKIcon />
+			</div>
+
+		</span>
+	</div>
+</form>

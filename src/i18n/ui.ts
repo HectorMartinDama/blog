@@ -19,6 +19,10 @@ export const ui = {
     "editArticle.href": "¿Una errata? Edita el artículo.",
     "sidebarContentPost.heading": "Contenido del artículo",
     "DoYouLike.heading": "¿Te ha gustado el artículo?",
+    "SearchComponent.placeholder": "Buscar...",
+    "SearchPage.heading": "Resultados de",
+    "SearchPage.button": "Últimos artículos",
+    "SearchPage.notFound": "No se han encontrado artículos relacionados con",
     "DoYouLike.paragraph":
       "Si te ha gustado el artículo, puedes realizar estas dos acciones para apoyar mi contenido.",
     "shareArticle.button": "Compartir articulo",
@@ -39,6 +43,10 @@ export const ui = {
     "editArticle.href": "A typo? Edit the article.",
     "sidebarContentPost.heading": "Table of contents",
     "DoYouLike.heading": "Did you like the article?",
+    "SearchComponent.placeholder": "Search...",
+    "SearchPage.heading": "Results for",
+    "SearchPage.button": "Latest articles",
+    "SearchPage.notFound": "No articles found related to",
     "DoYouLike.paragraph":
       "If you liked the article, you can take these two actions to support my content.",
     "shareArticle.button": "Share article",

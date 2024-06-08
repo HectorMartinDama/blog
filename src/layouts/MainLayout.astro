@@ -22,7 +22,7 @@ const lang = getLangFromUrl(Astro.url);
 	<body class="">
         <Nav {headings}/>
         <div class="flex justify-center mt-[100px] md:mt-[50px] w-full">
-            <main class="md:w-[736px] px-[20px] md:px-0 w-full">
+            <main class="md:max-w-[736px] px-[20px] md:px-0 w-full">
                 <slot></slot>
             </main>
         </div>

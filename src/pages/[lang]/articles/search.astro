@@ -1,0 +1,109 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import MainLayout from "../../../layouts/MainLayout.astro";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+import PostCard from "../../../components/PostCard.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+
+const query: string | null= Astro.url.searchParams.get('query');
+const allPostsByLanguage: CollectionEntry<'blog'>[]= await getCollection('blog', ({id}) => { return id.startsWith(lang) });
+
+
+const searchResults= allPostsByLanguage.filter(article => {
+
+   
+        const titleMatch: boolean= article.data.title
+            .toLowerCase()
+            .includes(query!.toLocaleLowerCase());
+
+
+
+    const categoryMatch: boolean= article.data.category
+    .toLowerCase()
+    .includes(query!.toLocaleLowerCase());
+
+    const bodyMatch: boolean= article.body.toLocaleLowerCase().includes(query!.toLocaleLowerCase());
+
+    return titleMatch || bodyMatch || categoryMatch;
+});
+---
+
+
+<MainLayout title="Search Results">
+    <h3 class="text-xl font-bold mb-5 -tracking-wider">{t('SearchPage.heading')} <span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE]">{query}<span/></h3>
+    {
+        searchResults.map(article => <PostCard frontmatter={article.data} url={article.slug}/>)
+    }
+    {
+        searchResults.length === 0 && 
+        <div class="flex flex-col items-center justify-center w-full h-full">
+            <h1 class="text-2xl font-medium -tracking-wider">{t('SearchPage.notFound')} <span class="font-bold truncate">{query}</span>.</h1>
+            <a href={`/${lang}`} class="text-xs justify-center mt-5 dark:text-white">{t('SearchPage.button')}</a>
+        </div>
+    } 
+</MainLayout>
+
+
+<style>
+    a {
+  background: transparent;
+  position: relative;
+  padding: 10px 10px;
+  display: flex;
+  align-items: center;
+  width: 130px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid gray;
+  border-radius: 25px;
+  outline: none;
+  overflow: hidden;
+  color: black;
+  transition: color 0.3s 0.1s ease-out;
+  text-align: center;
+}
+
+a span {
+  margin: 10px;
+}
+
+a::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  content: '';
+  border-radius: 50%;
+  display: block;
+  width: 20em;
+  height: 20em;
+  left: -5em;
+  text-align: center;
+  transition: box-shadow 0.5s ease-out;
+  z-index: -1;
+}
+
+a:hover {
+  color: #fff;
+  border: 1px solid #3D4FF5;
+}
+
+html.dark a:hover {
+  color: black;
+  border: 1px solid #B2C6FE;
+}
+
+a:hover::before {
+  box-shadow: inset 0 0 0 10em #3D4FF5;
+}
+
+html.dark a:hover::before {
+  box-shadow: inset 0 0 0 10em #B2C6FE;
+}
+
+</style>
