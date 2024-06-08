@@ -8,7 +8,7 @@ export const defaultLang = "es";
 
 export const ui = {
   es: {
-    "indexPage.title": "Mi blog",
+    "indexPage.title": "HectorDev Blog",
     "indexPage.LatestArticles": "Últimos artículos",
     "indexPage.ArticlesBySubject": "Artículos por temas",
     "pagination.recents": "artículos recientes",
@@ -28,7 +28,7 @@ export const ui = {
     "footer.portfolio": "Portafolio",
   },
   en: {
-    "indexPage.title": "My blog",
+    "indexPage.title": "HectorDev Blog",
     "indexPage.LatestArticles": "Latest articles",
     "indexPage.ArticlesBySubject": "Articles by subject",
     "pagination.recents": "recent articles",
