@@ -8,28 +8,28 @@ category: Express
 author: Hector Martin Dama
 ---
 
-**Express** es uno de los frameworks más famosos para el desarrollo backend con Node.js, y en este artículo te voy a enseñar cómo iniciar un proyecto con esta tecnología.
+**Express** is one of the most famous frameworks for backend development with Node.js, and in this article I am going to teach you how to start a project with this technology.
 
-## 1. Creamos la carpeta inicial y el package.json.
+## 1. We create the initial folder and the package.json.
 
-Creamamos la carpeta donde estará el proyecto e inicializamos el proyecto.
+We create the folder where the project will be and initialize the project.
 
 ```shell
-mkdir auth-middleware #crea la carpeta
-cd auth-middleware # entramos dentro de la carpeta
-npm init -y o pnpm init # inicializamos el proyecto
+mkdir auth-middleware # create the folder
+cd auth-middleware # go in to the folder
+npm init -y o pnpm init # initialize the project
 ```
 
-Si al inicializar el proyecto nos sale el error "command not found", para solucionarlo debemos instalar [Node.js](https://nodejs.org/en/download/package-manager) y [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) o [pnpm](https://pnpm.io/installation).
+If when initializing the project we get the error "command not found", to solve it we must install [Node.js](https://nodejs.org/en/download/package-manager) and [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) or [pnpm](https://pnpm.io/installation).
 
-Después de ejecutar estos comandos, deberás tener en la carpeta un archivo `package.json` con el siguiente contenido.
+After running these commands, you should have a `package.json` file in the folder with the following content.
 
 ```json
 {
   "name": "your file name",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js", // El punto de entrada de nuestra app se debe cambiar por .ts
+  "main": "index.js", // The entry point of our app must be changed to .ts
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -39,32 +39,32 @@ Después de ejecutar estos comandos, deberás tener en la carpeta un archivo `pa
 }
 ```
 
-## 2. Instalar Typescript y otras dependencias
+## 2. Install Typescript and other dependencies
 
-En este proyecto vamos a utilizar las siguientes depedencias:
+In this project we are going to use the following dependencies:
 
-- [express](https://www.npmjs.com/package/express): Servidor web
-- [cors](https://www.npmjs.com/package/cors): Permite la Compartición de Recursos de origen cruzado
-- [dotenv](https://www.npmjs.com/package/dotenv): Gestor de variables de entorno
-- [nodemon](https://www.npmjs.com/package/nodemon): Permite actualizar el servidor de forma automatica cuando se aplica un cambio en el codigo.
+- [express](https://www.npmjs.com/package/express): Web Server
+- [cors](https://www.npmjs.com/package/cors): Allows Cross-Origin Resource Sharing
+- [dotenv](https://www.npmjs.com/package/dotenv): Environment variable manager
+- [nodemon](https://www.npmjs.com/package/nodemon): Allows you to update the server automatically when a change is applied to the code.
 
 ```shell
 npm install express cors dotenv nodemon
 ```
 
-Como vamos a usar TypeScript, debemos instalar los tipos de datos correspondientes.
+Since we are going to use TypeScript, we must install the corresponding data types.
 
 ```shell
 npm install -D typescript ts-node-dev @types/express @types/cors
 ```
 
-## 3. Generar tsconfig.json
+## 3. Generate tsconfig.json
 
 ```shell
 npx tsc --init
 ```
 
-Una vez ejecutado ese comando, debemos abrir el archivo `tsconfig.json` y modificar la opción `outDir` para especificar el directorio donde se realizará la compilación de nuestra aplicación.
+Once this command is executed, we must open the `tsconfig.json` file and modify the `outDir` option to specify the directory where the compilation of our application will take place.
 
 ```json
 {
@@ -74,15 +74,15 @@ Una vez ejecutado ese comando, debemos abrir el archivo `tsconfig.json` y modifi
 }
 ```
 
-## 4. Crear un servidor en Express
+## 4. Create a server in Express
 
-Crea un archivo con el nombre `index.ts` y ábrelo. Este será el punto de inicio de nuestra aplicación. En este archivo, crearemos un endpoint llamado `/health`. Este endpoint se utiliza para comprobar que el servidor está funcionando correctamente. Es decir, si la respuesta del servidor es 200, significa que el servidor está funcionando.
+Create a file with the name `index.ts` and open it. This will be the starting point of our application. In this file, we will create an endpoint called `/health`. This endpoint is used to verify that the server is working correctly. That is, if the server response is 200, it means that the server is working.
 
 ```typescript
 import express, { Request, Response, Application } from "express";
 import dotenv from "dotenv";
 
-dotenv.config(); // para poder utlizar las variables de entorno
+dotenv.config(); // dotenv
 
 const app: Application = express();
 const PORT = process.env.port || 8000;
@@ -98,9 +98,9 @@ app.listen(PORT, () => {
 export default app;
 ```
 
-## 5. Agregamos los scripts en el package.json
+## 5. Add the scripts in the package.json
 
-Agregamos los comandos para poder iniciar el proyecto y realizar el build. En este caso, utilizaremos el comando `dev`, que utilizará la librería nodemon para actualizar el servidor de forma automática cada vez que guardemos un cambio, y `build` para compilar nuestra aplicación más adelante.
+Add the commands to be able to start the project and carry out the build. In this case, we will use the `dev` command, which will use the nodemon library to automatically update the server every time we save a change, and `build` to compile our application later.
 
 ```json
 {
@@ -112,39 +112,39 @@ Agregamos los comandos para poder iniciar el proyecto y realizar el build. En es
 }
 ```
 
-## 6. Corremos el codigo
+## 6. Run the code
 
 ```shell
 npm run dev
 ```
 
-## 7. Comprobamos la respuesta del servidor
+## 7. Check the server response
 
-Para comprobar que el servidor responde, podemos hacerlo de dos formas:
+To check that the server responds, we can do it in two ways:
 
-1. Desde el navegador, ingresando a [http://localhost:8000/health](http://localhost:8000/health).
+1. From the browser, entering [http://localhost:8000/health](http://localhost:8000/health).
 
 ![browser request](/images/post-7/browserRequest.webp)
 
-2. Haciendo una solicitud de tipo GET en Postman.
+2. Making a GET request in Postman.
 
 ![postman request](/images/post-7/postmanGetRequest.webp)
 
-## 8. Testing de los endpoints con Vitest y SuperTest
+## 8. Endpoint testing with Vitest and SuperTest
 
-La utilización de pruebas es cada vez más importante, ya que aseguran que la API funcione como se espera, incluso después de realizar cambios o actualizaciones.
+The use of tests is increasingly important, as they ensure that the API works as expected, even after changes or updates are made.
 
-### Instalar Vitest y Supertest
+### Install Vitest and Supertest
 
-Estas dos librerías nos ayudarán a realizar pruebas a los endpoints de nuestra API.
+These two libraries will help us test the endpoints of our API.
 
 ```shell
 npm install -D vitest supertest @types/supertest
 ```
 
-### Configurar script que ejecuta los test
+### Configure script that executes the tests
 
-Para ello, debemos ir al archivo `package.json` y cambiar el valor de **test**.
+To do this, we must go to the `package.json` file and change the value of **test**.
 
 ```json
 "scripts": {
@@ -152,9 +152,9 @@ Para ello, debemos ir al archivo `package.json` y cambiar el valor de **test**.
   }
 ```
 
-### Configurar Vitest para Node.js
+### Configure Vitest for Node.js
 
-En la carpeta raíz, debemos crear un archivo llamado `vite.config.ts` con este contenido.
+In the root folder, we need to create a file called `vite.config.ts` with this content.
 
 ```typescript
 import { defineConfig } from "vitest/config";
@@ -167,9 +167,9 @@ export default defineConfig({
 });
 ```
 
-### Creando nuestro primer test
+### Creating our first test
 
-Crearemos una carpeta llamada `tests` y dentro de ella crearemos un archivo llamado `index.test.ts`. En este archivo, escribiremos un test que compruebe que la respuesta del endpoint `/health` es 200.
+We will create a folder called `tests` and inside it we will create a file called `index.test.ts`. In this file, we will write a test that verifies that the response from the `/health` endpoint is 200.
 
 ```typescript
 import { describe, it, expect } from "vitest";
@@ -184,7 +184,7 @@ describe("API endpoint", () => {
 });
 ```
 
-### Ejecutamos el test
+### Run the test
 
 ```shell
 npm run test
@@ -192,7 +192,7 @@ npm run test
 
 ![test response ok](/images/post-2/okResponseTest.webp)
 
-Para verificar la fiabilidad del test, debemos hacer que falle para evitar falsos positivos. Para lograrlo, podemos cambiar el código de estado en el archivo `index.test.ts` de 200 a otro valor, por ejemplo, 500.
+To verify the reliability of the test, we must make it fail to avoid false positives. To achieve this, we can change the status code in the `index.test.ts` file from 200 to another value, for example, 500.
 
 ```typescript
 describe("API endpoint", () => {
@@ -203,15 +203,15 @@ describe("API endpoint", () => {
 });
 ```
 
-Ejecutamos nuevamente el test y confirmamos que efectivamente el test falla. Nos indica que se esperaba un código de estado 500 pero ha recibido un 200. Por lo tanto, podemos concluir que nuestro test es fiable.
+Run the test again and confirm that the test does indeed fail. It tells us that a status code of 500 was expected but it received a 200. Therefore, we can conclude that our test is reliable.
 
 ![test response error](/images/post-2/errorResponseTest.webp)
 
-## 9. Deploy en producción con CI y CD.
+## 9. Deploy to production with CI and CD.
 
-### Subir el codigo a un repo de github
+### Upload the code to a github repo
 
-Antes de subir el proyecto, debemos crear un archivo `.gitignore`, que se utiliza para evitar que ciertos archivos o directorios se suban al repositorio al ejecutar `git add`.
+Before uploading the project, we must create a `.gitignore` file, which is used to prevent certain files or directories from being uploaded to the repository when running `git add`.
 
 ```shell
 .env
@@ -219,7 +219,7 @@ dist/
 node_modules
 ```
 
-Para subir el proyecto a GitHub, primero debemos crear un nuevo repositorio en GitHub y luego seguir las instrucciones proporcionadas para agregar nuestro repositorio local al repositorio remoto en GitHub.
+To upload the project to GitHub, we first need to create a new repository on GitHub and then follow the instructions provided to add our local repository to the remote repository on GitHub.
 
 ```shell
 echo "# Api-TypeScript-Express-CD" >> README.md
@@ -231,7 +231,7 @@ git remote add origin git@github.com:HectorMartinDama/Api-TypeScript-Express-CD.
 git push -u origin main
 ```
 
-Después, debes ejecutar estos comandos:
+Then, you must execute these commands:
 
 ```shell
 git add .
@@ -241,20 +241,18 @@ git push origin main
 
 ### Render
 
-Necesitamos crear una cuenta en [Render](https://render.com/). Una vez que tengamos la cuenta, hacemos clic en el botón "New", luego en "Web Service", y finalmente seleccionamos "Build and deploy from a Git repository". Seleccionamos el repositorio que creamos en el paso anterior.
+We need to create an account on [Render](https://render.com/). Once we have the account, we click on the "New" button, then on "Web Service", and finally we select "Build and deploy from a Git repository". We select the repository that we created in the previous step.
 
-En la configuración del despliegue, en el apartado **Build Command**, ponemos el siguiente comando: `npm install && npm run build`. En el apartado **Start Command**, ponemos: `npm run start`. Finalmente, hacemos clic en **Create Web Service**. Si todo ha ido bien, el proyecto estará disponible en Internet.
+In the deployment configuration, in the **Build Command** section, we put the following command: `npm install && npm run build`. In the **Start Command** section, we put: `npm run start`. Finally, we click on **Create Web Service**. If everything has gone well, the project will be available on the Internet.
 
 ![deploy is live](/images/post-2/deployIsLive.webp)
 
-> Ahora, cada vez que hagas un commit o una PR en tu repositorio, el proyecto se desplegará automáticamente con los nuevos cambios.
+> Now, every time you make a commit or PR to your repository, the project will automatically deploy with the new changes.
 
 ### Github Actions
 
-Aquí tienes la corrección:
+With this GitHub action, we create a workflow to run every time we commit to the repository. This workflow first runs our API tests and, if they pass, deploys to Render.
 
-Con esta acción de GitHub, creamos un flujo de trabajo para que se ejecute cada vez que hagamos un commit en el repositorio. Este flujo de trabajo primero ejecuta las pruebas de nuestra API y, si estas pasan, realiza el despliegue en Render.
+[official render documentation](https://docs.render.com/deploy-hooks)
 
-[Documentación Oficial de Render](https://docs.render.com/deploy-hooks)
-
-Aquí tenéis el [repositorio](https://github.com/HectorMartinDama/Api-TypeScript-Express-CD) de GitHub.
+Here you have the [repository](https://github.com/HectorMartinDama/Api-TypeScript-Express-CD) the GitHub.
