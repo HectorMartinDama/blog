@@ -15,7 +15,7 @@ author: Hector Martin Dama
 Creamamos la carpeta donde estará el proyecto e inicializamos el proyecto.
 
 ```shell
-mkdir auth-middleware #crea la carpeta
+mkdir auth-middleware # crea la carpeta
 cd auth-middleware # entramos dentro de la carpeta
 npm init -y o pnpm init # inicializamos el proyecto
 ```
@@ -250,8 +250,6 @@ En la configuración del despliegue, en el apartado **Build Command**, ponemos e
 > Ahora, cada vez que hagas un commit o una PR en tu repositorio, el proyecto se desplegará automáticamente con los nuevos cambios.
 
 ### Github Actions
-
-Aquí tienes la corrección:
 
 Con esta acción de GitHub, creamos un flujo de trabajo para que se ejecute cada vez que hagamos un commit en el repositorio. Este flujo de trabajo primero ejecuta las pruebas de nuestra API y, si estas pasan, realiza el despliegue en Render.
 
