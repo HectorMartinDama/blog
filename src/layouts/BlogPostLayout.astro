@@ -46,6 +46,14 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
                 <slot/>
             </div>
             <DoYouLike slug={headings[0].file}/>
+            <script type="application/javascript" src="https://utteranc.es/client.js"
+                repo="HectorMartinDama/blog-comments",
+                label="comment"
+                issue-term="title"
+                theme="preferred-color-scheme"
+                crossorigin="anonymous"
+                async>
+            </script>
             <aside class="flex flex-col md:flex-row justify-center items-center gap-8 mt-[68px]">
                 {
                     relatedPosts.length > 0 && (
@@ -53,10 +61,7 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
                     )
                 }
             </aside>
-        </div>    
-     
-
-
+        </div>
     </article>
 </MainLayout>
 
