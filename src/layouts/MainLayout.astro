@@ -8,17 +8,18 @@ import { getLangFromUrl } from '../i18n/utils';
 
 interface Props {
     title: string;
-    description?: string;
+    description: string;
+    ogImage?: string;
     headings?: Heading[];
 }
 
-const { title, description, headings }= Astro.props;
+const { title, description, headings, ogImage }= Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 ---
 
 <html lang={lang}>
-    <MainHead {title}/>	
+    <MainHead {title} {ogImage} {description} />	
 	<body class="">
         <Nav {headings}/>
         <div class="flex justify-center mt-[100px] md:mt-[50px] w-full">

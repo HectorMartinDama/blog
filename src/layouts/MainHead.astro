@@ -1,16 +1,27 @@
 ---
 import ViewTransitions from 'astro/components/ViewTransitions.astro';
-import { getLangFromUrl } from '../i18n/utils';
+import Metadata from '../components/MetadataOgImage.astro';
+import MetadataOgImage from '../components/MetadataOgImage.astro';
 
 interface Props {
     title: string;
+    description: string;
+    ogImage?: string;
 }
 
-const { title }= Astro.props;
+const { title, description, ogImage }= Astro.props;
 ---
 
 <head>
     <meta charset="utf-8" />
+    <!-- Canonical URL -->
+    <link rel='canonical' href={Astro.url.href} />
+
+    {
+        ogImage && <MetadataOgImage image={ogImage} {title} {description} canonicalUrl={Astro.url.href} type='article' />
+    }
+    
+
     <link rel="icon" type="image/svg+xml" href="/favicon2.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />   

@@ -6,32 +6,26 @@ import MainLayout from "./MainLayout.astro";
 import SidebarContentPost from "../components/SidebarContentPost.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import DoYouLike from "../components/DoYouLike.astro";
-import Metadata from "../components/Metadata.astro";
+import Metadata from "../components/MetadataOgImage.astro";
 import { getLangFromUrl } from "../i18n/utils";
+import Comments from "../components/Comments.astro";
+import type { onPageLoad } from "astro/virtual-modules/transitions-events.js";
 
-const { frontmatter, file, headings } = Astro.props;
+const { frontmatter, file, headings, canonical } = Astro.props;
 const { slug } =Astro.params;
 
 const lang = getLangFromUrl(Astro.url);
 const { title, date, author, description, image, category }= frontmatter;
 
+const ogImage= `/${lang}/blog/${slug}/og.png`;
 const allPostsByLanguage: CollectionEntry<'blog'>[]= await getCollection('blog', ({id}) => { return id.startsWith(lang) })
 const orderPosts= formatBlogPostsByDate(allPostsByLanguage);
 const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.data.category === category && post.data.title  != title).slice(0, 3);
 ---
 
-<head>
-    <Metadata
-        slot="head"
-        title={title}
-        description={description}
-        image={`/${lang}/blog/${slug}/og.png`}
-        canonicalUrl={`/blog/${slug}/post-2`}
-        type="article"
-      />
-</head>
 
-<MainLayout {title} {description} {headings}>
+
+<MainLayout {title} {description} {headings} {ogImage}>
     {
         headings && headings.length > 0 && (
             <div class="right-[32px] fixed top-[100px] hidden lg:block">
@@ -45,15 +39,8 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
             <div class="max-w-full prose dark:prose-invert prose-a:text-[#3D4FF5] dark:prose-a:text-[#B2C6FE] prose-headings:text-[#3D4FF5] prose-headings:font-bold prose-headings:-tracking-wide  dark:prose-headings:text-[#B2C6FE] dark:text-[#fafafa]">
                 <slot/>
             </div>
+            <Comments client:load restore:load/>
             <DoYouLike slug={headings[0].file}/>
-            <script type="application/javascript" src="https://utteranc.es/client.js"
-                repo="HectorMartinDama/blog-comments",
-                label="comment"
-                issue-term="title"
-                theme="preferred-color-scheme"
-                crossorigin="anonymous"
-                async>
-            </script>
             <aside class="flex flex-col md:flex-row justify-center items-center gap-8 mt-[68px]">
                 {
                     relatedPosts.length > 0 && (

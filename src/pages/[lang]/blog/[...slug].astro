@@ -1,11 +1,10 @@
 ---
 import { getEntry } from "astro:content";
+import Comments from "../../../components/Comments.astro";
 
 const { lang, slug }= Astro.params;
 
 const page = await getEntry('blog', `${lang}/${slug}`);
-
-console.log(lang, slug, 'hola')
 
 if(!page){
     return Astro.redirect('/404');
@@ -15,7 +14,12 @@ const { Content }= await page.render();
 ---
 
 
+
 <Content/>
+
+
+
+
 
 
 
