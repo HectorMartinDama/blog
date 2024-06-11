@@ -12,7 +12,7 @@ author: Hector Martin Dama
 
 ## 1. Creamos la carpeta inicial y el package.json.
 
-Creamamos la carpeta donde estará el proyecto e inicializamos el proyecto.
+Creamos la carpeta donde estará el proyecto e inicializamos el proyecto.
 
 ```shell
 mkdir auth-middleware # crea la carpeta
@@ -112,7 +112,7 @@ Agregamos los comandos para poder iniciar el proyecto y realizar el build. En es
 }
 ```
 
-## 6. Corremos el codigo
+## 6. Corremos el código 
 
 ```shell
 npm run dev
@@ -209,7 +209,7 @@ Ejecutamos nuevamente el test y confirmamos que efectivamente el test falla. Nos
 
 ## 9. Deploy en producción con CI y CD.
 
-### Subir el codigo a un repo de github
+### Subir el código a un repo de github
 
 Antes de subir el proyecto, debemos crear un archivo `.gitignore`, que se utiliza para evitar que ciertos archivos o directorios se suban al repositorio al ejecutar `git add`.
 
