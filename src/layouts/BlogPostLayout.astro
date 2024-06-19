@@ -6,10 +6,8 @@ import MainLayout from "./MainLayout.astro";
 import SidebarContentPost from "../components/SidebarContentPost.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 import DoYouLike from "../components/DoYouLike.astro";
-import Metadata from "../components/MetadataOgImage.astro";
 import { getLangFromUrl } from "../i18n/utils";
 import Comments from "../components/Comments.astro";
-import type { onPageLoad } from "astro/virtual-modules/transitions-events.js";
 
 const { frontmatter, file, headings, canonical } = Astro.props;
 const { slug } =Astro.params;
