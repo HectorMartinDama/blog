@@ -1,14 +1,24 @@
-# Astro Starter Kit: Minimal
 
-```sh
-npm create astro@latest -- --template minimal
-```
+<div align="center">
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+![Astro Badge](https://img.shields.io/badge/Astro-241778?logo=astro&logoColor=fff&style=flat)
+![GitHub stars](https://img.shields.io/github/stars/HectorMartinDama/blog)
+![GitHub issues](https://img.shields.io/github/issues/HectorMartinDama/blog)
+![GitHub forks](https://img.shields.io/github/forks/HectorMartinDama/blog)
+![GitHub PRs](https://img.shields.io/github/issues-pr/HectorMartinDama/blog)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+</div>
+
+## 🛠️ Stack
+
+- [**Astro**](https://astro.build/) - Framework for Static Pages
+- [**i18n by Astro**](https://docs.astro.build/en/recipes/i18n/) - Support multilangue
+- [**Utteranc**](https://utteranc.es/), [`blog-comments repository`](https://github.com/HectorMartinDama/blog-comments) - Issues as comments
+- [**TypeScript**](https://www.typescriptlang.org/) - JavaScript with syntax for types
+- [**Tailwdindcss**](https://tailwindcss.com/) - CSS Framework 
+- [**Tailwindcss-typography**](https://tailwindcss-typography.vercel.app/) - Plugin to markdown
+- [**Vercel OG (Open Graph Image Generation)**](https://vercel.com/docs/functions/og-image-generation) - Open Graph Image Generation
+- [**Sonner**](https://sonner.emilkowal.ski/) - Notifications
 
 ## 🚀 Project Structure
 
@@ -19,15 +29,11 @@ Inside of your Astro project, you'll see the following folders and files:
 ├── public/
 ├── src/
 │   └── pages/
-│       └── index.astro
+|   └── content/blog
+|      └── en/
+|      └── es/
 └── package.json
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
 
 ## 🧞 Commands
 
@@ -42,7 +48,20 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-# blog
+## ✌️ Contributing
+
+> [!IMPORTANT]
+> If you want to contribute go to the file [`CONTRIBUTING.md`](https://github.com/HectorMartinDama/blog/CONTRIBUTING.md)
+
+<a href="https://github.com/HectorMartinDama/blog/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=HectorMartinDama/blog" />
+</a>
+
+<p></p>
+
+
+
+
+
+
