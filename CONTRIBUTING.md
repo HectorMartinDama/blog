@@ -7,8 +7,6 @@
 > 2. If it is a bug report, include the steps to reproduce the issue.
 > 3. If it is a feature request, please share the motivation for the new feature and how you would implement it.
 
-Puedes contribuir directamente a este blog haciendo un PR tanto si quires hacer un articulo o añadir alguna feature.
-
 You will need:
 
 - [Node.js 18+](https://nodejs.org/en/)
@@ -19,7 +17,7 @@ Steps:
 1. Fork this repository and clone it locally:
 
 ```
-git clone git@github.com:your_username/svgl.git
+git clone git@github.com:your_username/blog.git
 ```
 
 2. Install dependencies:
@@ -28,13 +26,25 @@ git clone git@github.com:your_username/svgl.git
 npm install
 ```
 
-3. Go to the and add the artcle write in [`Markdown`](https://www.markdownguide.org/basic-syntax/)
+3. Go to the `src/content/blog/<language>/post-<number>.md` and add the article write in [`Markdown`](https://www.markdownguide.org/basic-syntax/)
 
-4.
+4. Write the article. **You must copy this in all articles**.
 
+```markdown
+---
+layout: "../../../layouts/BlogPostLayout.astro"
+title: How to start a TypeScript project with Node.js and Express
+date: 2024-05-31
+description: Basic infrastructure to start an Express project with TypeScript.
+image: { src: "/images/post-2/cover.webp", alt: "A picture of infraestructure" }
+category: Express
+author: Hector Martin Dama
+---
+
+Content of the article here!!!
 ```
 
-```
+[Real example](https://github.com/HectorMartinDama/blog/blob/main/src/content/blog/en/post-2.md)
 
 > [!WARNING]
 >
