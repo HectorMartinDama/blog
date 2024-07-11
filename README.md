@@ -58,7 +58,7 @@ All commands are run from the root of the project, from a terminal:
 ## ✌️ Contributing
 
 > [!IMPORTANT]
-> If you want to contribute go to the file [`CONTRIBUTING.md`](https://github.com/HectorMartinDama/blog/CONTRIBUTING.md)
+> If you want to contribute go to the file [`CONTRIBUTING.md`](https://github.com/HectorMartinDama/blog/blob/main/CONTRIBUTING.md)
 
 <a href="https://github.com/HectorMartinDama/blog/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=HectorMartinDama/blog" />
