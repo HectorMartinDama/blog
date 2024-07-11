@@ -25,7 +25,7 @@ export const ui = {
     "SearchPage.notFound": "No se han encontrado artículos relacionados con",
     "DoYouLike.paragraph":
       "Si te ha gustado el artículo, puedes realizar estas dos acciones para apoyar mi contenido.",
-    "shareArticle.button": "Compartir articulo",
+    "shareArticle.button": "Compartir",
     "shareArticle.success.notification": "Enlace copiado correctamente",
     "shareArticle.error.notification": "No se ha podido copiar el enlace",
     "footer.contact": "Contacto",
@@ -49,7 +49,7 @@ export const ui = {
     "SearchPage.notFound": "No articles found related to",
     "DoYouLike.paragraph":
       "If you liked the article, you can take these two actions to support my content.",
-    "shareArticle.button": "Share article",
+    "shareArticle.button": "Share",
     "shareArticle.success.notification": "Copied to clipboard",
     "shareArticle.error.notification": "Error to copied",
     "footer.contact": "Contact",

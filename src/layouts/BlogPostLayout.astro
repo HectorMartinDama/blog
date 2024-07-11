@@ -26,7 +26,7 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
 <MainLayout {title} {description} {headings} {ogImage}>
     {
         headings && headings.length > 0 && (
-            <div class="right-[32px] fixed top-[100px] hidden lg:block">
+            <div class="right-[32px] fixed top-[100px] hidden lg:block h-full">
                 <SidebarContentPost {headings}/>
             </div>
         )
@@ -38,7 +38,6 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
                 <slot/>
             </div>
             <Comments restore:load/>
-            <DoYouLike slug={headings[0].file}/>
             <aside class="flex flex-col md:flex-row justify-center items-center gap-8 mt-[68px]">
                 {
                     relatedPosts.length > 0 && (
