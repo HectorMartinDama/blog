@@ -8,6 +8,8 @@ category: Express
 author: Hector Martin Dama
 ---
 
+export const prerender = true;
+
 **Express** es uno de los frameworks más famosos para el desarrollo backend con Node.js, y en este artículo te voy a enseñar cómo iniciar un proyecto con esta tecnología.
 
 ## 1. Creamos la carpeta inicial y el package.json.
@@ -112,7 +114,7 @@ Agregamos los comandos para poder iniciar el proyecto y realizar el build. En es
 }
 ```
 
-## 6. Corremos el código 
+## 6. Corremos el código
 
 ```shell
 npm run dev

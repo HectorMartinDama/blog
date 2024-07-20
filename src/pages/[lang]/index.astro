@@ -9,7 +9,6 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { ARTICLES_PER_PAGE } from "../../scripts/constants";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
-
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
