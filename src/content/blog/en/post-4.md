@@ -4,6 +4,8 @@ title: Autenticación en Express con JWT
 date: 2021-08-07
 description: Protege tus rutas en express con JSON Web Tokens JWT mediante un Middleware.
 category: Express
+image:
+  { src: "/images/post-3/cover.webp", alt: "A picture of Responsively App" }
 author: Hector Martin Dama
 ---
 
