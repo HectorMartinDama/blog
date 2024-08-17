@@ -8,7 +8,12 @@ export default defineConfig({
   build: {
     format: "directory",
   },
-  integrations: [tailwind(), react({ experimentalReactChildren: true })],
+  integrations: [
+    tailwind(),
+    react({
+      experimentalReactChildren: true,
+    }),
+  ],
   markdown: {
     theme: "dracula",
     themes: {

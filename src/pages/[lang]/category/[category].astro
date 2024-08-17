@@ -1,11 +1,10 @@
 ---
 import PostCard from '../../../components/PostCard.astro';
+import SidebarContentPost from '../../../components/SidebarContentPost.astro';
 import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import MainLayout from '../../../layouts/MainLayout.astro';
 import { slugify } from '../../../scripts/slugify';
 import { type CollectionEntry, getCollection } from 'astro:content';
-
-
 
 
 
@@ -23,11 +22,34 @@ const categoryPosts= allPostsByLanguage.filter(post => slugify(post.data.categor
 
 
 <MainLayout title={t('categoryPage.heading') + categoryName}>
-    <h3 class="text-xl font-bold mb-5 -tracking-wider">{t('categoryPage.heading')} <span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE]">{categoryName}<span/></h3>
+    <h1 class="mb-5 -tracking-wide text-3xl font-bold text-[#3D4FF5] dark:text-[#B2C6FE] flex justify-between items-center">{categoryName}<span class="text-[15px] font-medium -tracking-normal text-[#555962] dark:text-[#888C96]">{categoryPosts.length} {t('categoryPage.heading')}</span></h1>
     <section class="flex flex-col" data-pagefind-ignore>
         {
-            categoryPosts.map((post) =><PostCard frontmatter={post.data} url={post.slug}/>)
+            categoryPosts.map((post) =><PostCard frontmatter={post.data} url={post.slug}/> <hr class="py-2"/>)
         }
-        </section>
+    </section>
+   
+    <div class="right-[120px] fixed top-[100px] hidden lg:block h-full">
+        <h2 class="font-bold text-lg -tracking-wide mb-5">{t('categoryPage.headingNav')}</h2>
+        <ul class="flex flex-col gap-4">
+            {
+                allCategories.map((category) =>  
+                    <li class="text-[15px] text-[#3D4FF5] dark:text-[#B2C6FE] inline-block" >
+                        <a class="font-semibold transition-all duration-150 hover:border-b-[3px] border-[#00c29f] hover:dark:border-[#71faca]" class:list={ {'current-category': categoryName[0] === category}} href={category.toLowerCase()}>{category}</a>
+                    </li>)
+            }
+        </ul>
+    </div>
+
 </MainLayout>
 
+<style lang="css">
+    .current-category{
+        border-bottom: 3px solid #00c29f;
+        pointer-events: none;
+
+        html.dark & {
+            border-color: #71faca;
+        }
+    } 
+</style>

@@ -2,7 +2,7 @@
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 import { buildHierarchy } from '../scripts/buildHierarchyTableContent';
 import type { Heading } from '../scripts/types';
-import ShareArticle from './ShareArticle';
+import ShareArticle from './ShareArticle.jsx';
 
 export interface Props {
     headings: {
@@ -50,6 +50,7 @@ const { slug } = Astro.params;
         <div class="flex flex-row gap-5 items-center justify-center mt-5">
             <a class="w-[150px]" target="_blank" href="https://www.buymeacoffee.com/hectormartindama"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=hectormartindama&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" /></a>
             <ShareArticle client:only="react" text={slug} lang={lang}/>
+            
         </div> 
     </div>
 </section>

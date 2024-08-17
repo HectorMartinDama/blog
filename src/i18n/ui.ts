@@ -14,7 +14,8 @@ export const ui = {
     "pagination.recents": "artículos recientes",
     "pagination.previous": "artículos anteriores",
     "authorPage.heading": "Artículos de",
-    "categoryPage.heading": "Artículos sobre",
+    "categoryPage.heading": "artículos",
+    "categoryPage.headingNav": "Otras categorias",
     "postHeader.paragraph": "por",
     "editArticle.href": "¿Una errata? Edita el artículo.",
     "sidebarContentPost.heading": "Contenido del artículo",
@@ -38,7 +39,8 @@ export const ui = {
     "pagination.recents": "recent articles",
     "pagination.previous": "previous articles",
     "authorPage.heading": "Articles of",
-    "categoryPage.heading": "Articles about",
+    "categoryPage.heading": "articles",
+    "categoryPage.headingNav": "Other categories",
     "postHeader.paragraph": "by",
     "editArticle.href": "A typo? Edit the article.",
     "sidebarContentPost.heading": "Table of contents",
@@ -50,6 +52,7 @@ export const ui = {
     "DoYouLike.paragraph":
       "If you liked the article, you can take these two actions to support my content.",
     "shareArticle.button": "Share",
+
     "shareArticle.success.notification": "Copied to clipboard",
     "shareArticle.error.notification": "Error to copied",
     "footer.contact": "Contact",
