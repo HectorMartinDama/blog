@@ -129,6 +129,8 @@ Los cambios que hagamos en el repositorio se dividen en 3 categorias:
 
 ### Ship
 
+Ship significa que realizaremos un cambio **directamente en la rama principal**, es decir, lo enviaremos **directamente a producción**. Debemos asegurarnos de que dicho cambio haya superado los tests internos.
+
 - **Descripción:** Se refiere a decisiones o cambios que un equipo puede ejecutar directamente, sin necesidad de consulta o aprobación.
 
 - **Ejemplo:** Correción de errores menores, ajustes de estilo en una interfaz de usuario, mejoras de rendimiento interno, añadir test.
@@ -138,6 +140,8 @@ Los cambios que hagamos en el repositorio se dividen en 3 categorias:
 ![Ship Esquema](/images/post-5/ShipEsquema.svg)
 
 ### Show
+
+En Show utilizamos **Pull Request**, pero **no dependemos de recibir feedback del equipo**. Simplemente esperamos que los tests del sistema de integración continua (CI) se completen con éxito.
 
 - **Descripción:** Los cambios se muestran o comunican después de que se hayan aplicados, ya que no necesitan aprobación previa.
 
@@ -149,6 +153,8 @@ Los cambios que hagamos en el repositorio se dividen en 3 categorias:
 
 ### Ask
 
+Es similar a Show, pero en este caso sí **esperamos al feedback** de nuestro equipo antes de realizar la fusión de la rama.
+
 - **Descripción:** Esta categoría se utiliza para decisiones de alto impacto o riesgo, donde es necesario pedir permiso o consultar a los interesados o al equipo de liderazgo antes de tomar cualquier acción. Estas decisiones suelen ser complejas o tener consecuencias importantes.
 - **Ejemplo:** Cambios que afectan la visión del producto, la dirección estratégica o decisiones financieras importantes.
 - **Propósito:** Asegurar que las decisiones críticas se tomen con el consenso adecuado y que se consideren todas las implicaciones.
@@ -158,5 +164,5 @@ Los cambios que hagamos en el repositorio se dividen en 3 categorias:
 ### Resumen
 
 - **Ship:** Actuar sin consultar. Baja complejidad y riesgo.
-- **Show:** Actuar, pero informar después. Moderado Riesgo.
-- **Ask:** Consultar antes de actuar. Alto riesgo o impacto.
+- **Show:** Actuar, pero informar después. Riesgo moderado.
+- **Ask:** Consultar antes de actuar. Riesgo alto.
