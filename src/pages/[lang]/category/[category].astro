@@ -22,15 +22,16 @@ const categoryPosts= allPostsByLanguage.filter(post => slugify(post.data.categor
 
 
 <MainLayout title={t('categoryPage.heading') + categoryName}>
-    <h1 class="mb-5 -tracking-wide text-3xl font-bold text-[#3D4FF5] dark:text-[#B2C6FE] flex justify-between items-center">{categoryName}<span class="text-[15px] font-medium -tracking-normal text-[#555962] dark:text-[#888C96]">{categoryPosts.length} {t('categoryPage.heading')}</span></h1>
+    <h1 class="md:my-5 my-3 -tracking-wide text-2xl font-bold text-[#3D4FF5] dark:text-[#B2C6FE] flex justify-between items-center">{categoryName}<span class="text-sm font-medium -tracking-normal text-[#71717a] dark:text-[#888C96]">{categoryPosts.length} {t('categoryPage.heading')}</span></h1>
     <section class="flex flex-col" data-pagefind-ignore>
         {
-            categoryPosts.map((post) =><PostCard frontmatter={post.data} url={post.slug}/> <hr class="py-2"/>)
+            categoryPosts.map((post) =><PostCard frontmatter={post.data} url={post.slug}/> <hr class="py-2 dark:border-[#424347]"/>)
         }
     </section>
+    
    
     <div class="right-[120px] fixed top-[100px] hidden lg:block h-full">
-        <h2 class="font-bold text-lg -tracking-wide mb-5">{t('categoryPage.headingNav')}</h2>
+        <h2 class="font-bold text-md -tracking-wide mb-5">{t('categoryPage.headingNav')}</h2>
         <ul class="flex flex-col gap-4">
             {
                 allCategories.map((category) =>  

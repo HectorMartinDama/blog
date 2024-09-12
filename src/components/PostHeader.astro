@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 
 <header>
     <div class="mb-7">
-        <h1 class="font-bold text-4xl text-center -tracking-wider w-full">{title}</h1>
+        <h1 class="font-bold text-4xl text-center -tracking-wider w-full" transition:name=`title-${title}`>{title}</h1>
         <div data-pagefind-ignore class="flex justify-center">
             <p data-pagefind-ignore class="text-xs text-center mt-3 hidden md:block">{t('postHeader.paragraph')}&nbsp;<a href={`/${lang}/author/${slugify(author)}`} class="underline"> {author}</a>&nbsp;·&nbsp;{formatDate(date)}&nbsp;·&nbsp;<EditArticle {file}/></p>
             <div class="md:hidden">

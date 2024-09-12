@@ -3,7 +3,6 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 function App({ text, lang }) {
   const t = useTranslations(lang);
-  console.log("lenguaje", lang);
   const handleCopy = () => {
     navigator.clipboard
       .writeText(
@@ -20,7 +19,7 @@ function App({ text, lang }) {
     <div>
       <Toaster position="bottom-left" />
       <button
-        className="px-4 py-2 border transition-colors duration-200 hover:bg-[#EDEEF2] dark:hover:bg-[#5B5E64] dark:text-white text-sm rounded-[6px] flex items-center justify-center gap-1"
+        className="px-4 py-2 border dark:border-[#424347] transition-colors duration-200 hover:bg-[#EDEEF2] dark:hover:bg-[#5B5E64] dark:text-white text-sm rounded-[6px] flex items-center justify-center gap-1"
         onClick={() => handleCopy()}
       >
         {t("shareArticle.button")}

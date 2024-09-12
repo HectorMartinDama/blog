@@ -22,11 +22,15 @@ const articleForPage: CollectionEntry<'blog'>[]= allPostsSorted.slice((currentPa
 
 
 <MainLayout title={t('indexPage.title')} description="HectorMartinDama Blog">
-	<SectionTitle title={t('indexPage.LatestArticles')} data-pagefind-ignore />
+	<div class="flex justify-between items-center">
+		<SectionTitle title={t('indexPage.LatestArticles')} data-pagefind-ignore />
+		<span class="text-sm font-medium -tracking-normal text-[#71717a] dark:text-[#888C96]">{allPostsByLanguage.length} {t('categoryPage.heading')}</span>
+
+	</div>
 	<section class="flex flex-col mb-7 box" data-pagefind-ignore >
 		<div data-pagefind-ignore transition:animate={slide({ duration: '0.6s' })} class="min-h-[420px]">
 			{
-				articleForPage.map((post) =><PostCard frontmatter={post.data} url={post.slug}/>)
+				articleForPage.map((post) =><PostCard frontmatter={post.data} url={post.slug} />)
 			}
 
 		</div>

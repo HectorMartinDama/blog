@@ -26,13 +26,13 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
 <MainLayout {title} {description} {headings} {ogImage}>
     {
         headings && headings.length > 0 && (
-            <div class="right-[32px] fixed top-[100px] hidden lg:block h-full">
+            <div class="right-[32px] fixed top-[100px] hidden lg:block h-full ">
                 <SidebarContentPost {headings}/>
             </div>
         )
     }
-    <article>
-        <PostHeader {title} {date} {category} {image} {author} {file}/>
+    <article class="relative -left-[80px]">
+        <PostHeader {title} {date} {category} {image} {author} {file} />
         <div>
             <div class="max-w-full prose dark:prose-invert prose-a:text-[#3D4FF5] dark:prose-a:text-[#B2C6FE] prose-headings:text-[#3D4FF5] prose-headings:font-bold prose-headings:-tracking-wide  dark:prose-headings:text-[#B2C6FE] dark:text-[#fafafa]">
                 <slot/>
@@ -49,5 +49,19 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
     </article>
 </MainLayout>
 
+
+<style>
+    article{
+        img:first-of-type{
+            aspect-ratio: 16/9;
+            border-radius: 10px;
+        }
+
+        img:first-child{
+            aspect-ratio: auto;
+            border-radius: 10px;
+        }
+    }
+</style>
 
 
