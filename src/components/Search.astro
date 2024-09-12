@@ -26,7 +26,7 @@ const t = useTranslations(lang);
 		<span class="absolute inset-y-0 left-0 flex items-center pl-3">
 			<SearchIcon/>
 		</span>
-		<input type="text" autocomplete="off" name="query" id="query" class="pl-10 pr-16 h-9 bg-white dark:text-[#B6C2CF] dark:bg-[#17181C] rounded-md  w-[350px] border dark:border-[#4b505d] text-[#676779] text-sm px-4 outline-none" placeholder=`${t('SearchComponent.placeholder')}`>
+		<input type="text" autocomplete="off" name="query" id="query" maxlength="50" class="pl-10 pr-16 h-9 bg-white dark:text-[#B6C2CF] dark:bg-[#17181C] rounded-md  w-[350px] border dark:border-[#4b505d] text-[#676779] text-sm px-4 outline-none" placeholder=`${t('SearchComponent.placeholder')}`>
 
 		<span class="absolute inset-y-0 right-0 flex items-center pr-3 gap-1">
 			<div

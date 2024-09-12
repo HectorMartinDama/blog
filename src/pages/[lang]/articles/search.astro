@@ -33,14 +33,15 @@ const searchResults= allPostsByLanguage.filter(article => {
 
 
 <MainLayout title="Search Results">
-    <h3 class="text-xl font-bold mb-5 -tracking-wider">{t('SearchPage.heading')} <span class="italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE]">{query}<span/></h3>
+    <h3 class="flex text-xl font-bold mb-5 -tracking-wider">{t('SearchPage.heading')} <p class="ml-1 max-w-[200px] truncate italic font-bold text-[#3D4FF5] dark:text-[#B2C6FE]">{query}</p></h3>
+
     {
         searchResults.map(article => <PostCard frontmatter={article.data} url={article.slug}/>)
     }
     {
         searchResults.length === 0 && 
         <div class="flex flex-col items-center justify-center w-full h-full">
-            <h1 class="text-2xl font-medium -tracking-wider">{t('SearchPage.notFound')} <span class="font-bold truncate">{query}</span>.</h1>
+            <h1 class="flex text-2xl font-medium -tracking-wider">{t('SearchPage.notFound')} <p class="ml-1 font-bold max-w-[200px] truncate">{query}</p></h1>
             <a href={`/${lang}`} class="text-xs justify-center mt-5 dark:text-white">{t('SearchPage.button')}</a>
         </div>
     } 

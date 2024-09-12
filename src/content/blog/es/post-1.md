@@ -60,18 +60,9 @@ Records the following actions:
 
 ## Deployment to production
 
-### Backend
-
-In [Render](https://render.com/)
-
-### MongoDB Database
-
-In [MongoAtlas](https://www.mongodb.com/docs/atlas/)
-
-### RabbitMQ
-
-In [CloudAMQP](https://www.cloudamqp.com/)
-
-### Frontend
-
-In [Cloudflare Pages](https://pages.cloudflare.com/)
+| Action           | Site                                              | Price |
+| ---------------- | ------------------------------------------------- | ----- |
+| Backend          | [Render](https://render.com/)                     | Free  |
+| MongoDB Database | [MongoAtlas](https://www.mongodb.com/docs/atlas/) | Free  |
+| RabbitMQ         | [CloudAMQP](https://www.cloudamqp.com/)           | Free  |
+| Frontend         | [Cloudflare Pages](https://pages.cloudflare.com/) | Free  |
