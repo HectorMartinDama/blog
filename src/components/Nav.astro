@@ -57,7 +57,7 @@ const toc=  buildHierarchy(headings);
 
     <label id="overlay" class="block md:hidden" for="navbar-active"></label>
 
-    <div class="links-container px-[40px] bg-[white] dark:bg-[#2e2e2e]" id="links-container">
+    <div class="links-container px-[40px] bg-[white] dark:bg-[#17181C]" id="links-container">
       
       <header class="flex flex-row justify-end items-center w-full h-[60px] mb-4">
         <label for="navbar-active" class="close-navbar-button ">
@@ -73,7 +73,7 @@ const toc=  buildHierarchy(headings);
         
               {
                 headings && headings.length > 0 && (
-                <h3 class="text-sm font-normal mb-3">Contenido del artículo</h3>
+                <h3 class="text-sm font-semibold mb-3">Contenido del artículo</h3>
                   <ul class="gap-4">
                     {
                       toc.map((heading: Heading) => (
@@ -98,7 +98,7 @@ const toc=  buildHierarchy(headings);
         
         
            
-            <footer class="border-t-2 py-4 w-full flex flex-row justify-between">
+            <footer class="border-t-2 dark:border-[#424347] py-4 w-full flex flex-row justify-between">
               <div class="flex gap-4">
                 <a href="https://github.com/HectorMartinDama" target="_blank">
                   <GithubIcon class="h-5 w-5  dark:fill-slate-100"/>
@@ -125,9 +125,6 @@ const toc=  buildHierarchy(headings);
     display: flex;
     align-items: center;
     height: 60px;
-    animation: nav-shadown 1s linear both;
-    animation-timeline: scroll();
-    animation-range: 0 100px;
     padding: 0 40px;
   }
 
@@ -149,10 +146,10 @@ const toc=  buildHierarchy(headings);
       align-items: center;
       position: fixed;
       top: 0;
-      right: -100%;
+      right: -250px;
       width: 250px;
       height: 100%;
-      transition: 0.5s ease-out;
+      transition: right 3s ease; /* Transición suave para el deslizamiento */
     }
     .open-navbar-button, .close-navbar-button {
       display: block;
@@ -169,6 +166,8 @@ const toc=  buildHierarchy(headings);
     position: fixed;
     top: 0;
     left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: right 1s ease-in-out;
   }
 }
 </style>
