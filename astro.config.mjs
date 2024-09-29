@@ -5,6 +5,14 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: "github-dark",
+      },
+    },
+    defaultColor: false,
+  },
   build: {
     format: "directory",
   },
@@ -14,15 +22,6 @@ export default defineConfig({
       experimentalReactChildren: true,
     }),
   ],
-  markdown: {
-    theme: "dracula",
-    themes: {
-      light: "github-light",
-      dark: "github-dark",
-    },
-    langs: ["javascript"],
-    wrap: true,
-  },
   output: "server",
   adapter: vercel(),
 });

@@ -1,8 +1,8 @@
 ---
 layout: "../../../layouts/BlogPostLayout.astro"
-title: Autenticación en Express con JWT
+title: Authentication in Express with JWT
 date: 2021-08-07
-description: Protege tus rutas en express con JSON Web Tokens JWT mediante un Middleware.
+description: Protect your express routes with JSON Web Tokens JWT using a Middleware.
 category: Express
 image:
   { src: "/images/post-3/cover.webp", alt: "A picture of Responsively App" }

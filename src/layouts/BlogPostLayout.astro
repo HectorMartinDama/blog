@@ -31,10 +31,10 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
             </div>
         )
     }
-    <article class="relative md:-left-[80px]">
+    <article style="--shiki-light-bg:red;" class="relative md:-left-[80px]">
         <PostHeader {title} {date} {category} {image} {author} {file} />
         <div>
-            <div class="max-w-full prose dark:prose-invert prose-a:text-[#3D4FF5] dark:prose-a:text-[#B2C6FE] prose-headings:text-[#3D4FF5] prose-headings:font-bold prose-headings:-tracking-wide  dark:prose-headings:text-[#B2C6FE] dark:text-[#fafafa]">
+            <div style="--shiki-dark:red;--shiki-light:green" class="max-w-full prose prose-slate prose-pre:text-indigo-500  dark:prose-invert prose-a:text-[#3D4FF5] dark:prose-a:text-[#B2C6FE] prose-headings:text-[#3D4FF5] prose-headings:font-bold prose-headings:-tracking-wide  dark:prose-headings:text-[#B2C6FE] dark:text-[#fafafa]">
                 <slot/>
             </div>
             <Comments restore:load/>
@@ -51,6 +51,13 @@ const relatedPosts: CollectionEntry<'blog'>[]= orderPosts.filter(post => post.da
 
 
 <style>
+
+pre {
+  color: green !important;
+  background-color:green;
+}
+
+
     article{
         img:first-of-type{
             aspect-ratio: 16/9;
